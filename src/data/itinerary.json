@@ -1,0 +1,376 @@
+[
+    {
+        "id": 1,
+        "date": "2026-02-18",
+        "weekday": "Wednesday",
+        "title": "Arrival & Check-in",
+        "location": "San Gabriel",
+        "weather": "Sunny 72°F",
+        "events": [
+            {
+                "time": "16:50",
+                "title": "Arrive ONT Airport",
+                "location": "Ontario International Airport",
+                "mapLink": "https://maps.google.com/?q=ONT+Airport",
+                "icon": "flight_land"
+            },
+            {
+                "time": "18:00",
+                "title": "Pick up Rental Car",
+                "location": "Rental Car Center",
+                "mapLink": "",
+                "icon": "directions_car"
+            },
+            {
+                "time": "19:00",
+                "title": "Check-in Airbnb",
+                "location": "8753 East Arcadia Avenue, San Gabriel",
+                "mapLink": "https://www.google.com/maps/search/?api=1&query=8753+East+Arcadia+Avenue+San+Gabriel+CA",
+                "icon": "home"
+            },
+            {
+                "time": "20:00",
+                "title": "Dinner: Golden Deli / 101 Noodle Express",
+                "location": "San Gabriel",
+                "mapLink": "https://www.google.com/maps/search/?api=1&query=Golden+Deli+San+Gabriel",
+                "icon": "restaurant"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "date": "2026-02-19",
+        "weekday": "Thursday",
+        "title": "Pasadena Culture & Jet Lag",
+        "location": "Pasadena",
+        "weather": "Sunny 75°F",
+        "events": [
+            {
+                "time": "10:00",
+                "title": "Breakfast: Vroman's / Great Maple",
+                "location": "Pasadena",
+                "mapLink": "",
+                "icon": "coffee"
+            },
+            {
+                "time": "11:00",
+                "title": "The Huntington Library",
+                "location": "The Huntington",
+                "mapLink": "https://www.google.com/maps/search/?api=1&query=The+Huntington+Library",
+                "icon": "local_library"
+            },
+            {
+                "time": "14:00",
+                "title": "Old Pasadena Shopping",
+                "location": "Colorado Blvd",
+                "mapLink": "",
+                "icon": "shopping_bag"
+            },
+            {
+                "time": "16:00",
+                "title": "Trader Joe's",
+                "location": "South Pasadena",
+                "mapLink": "https://www.google.com/maps/search/?api=1&query=Trader+Joe's+South+Pasadena",
+                "icon": "shopping_cart"
+            },
+            {
+                "time": "17:30",
+                "title": "Super King Market",
+                "location": "Altadena",
+                "mapLink": "https://www.google.com/maps/search/?api=1&query=Super+King+Market+Altadena",
+                "icon": "store"
+            },
+            {
+                "time": "19:00",
+                "title": "Dinner: Sam Woo BBQ / Boiling Point",
+                "location": "San Gabriel",
+                "mapLink": "",
+                "icon": "restaurant"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "date": "2026-02-20",
+        "weekday": "Friday",
+        "title": "Lakers Game Day & Hollywood",
+        "location": "DTLA / Hollywood",
+        "weather": "Sunny 74°F",
+        "events": [
+            {
+                "time": "09:30",
+                "title": "Breakfast: Eggslut",
+                "location": "Grand Central Market",
+                "mapLink": "https://www.google.com/maps/search/?api=1&query=Grand+Central+Market",
+                "icon": "egg_alt"
+            },
+            {
+                "time": "11:30",
+                "title": "Beverly Hills & Rodeo Drive",
+                "location": "Beverly Hills",
+                "mapLink": "",
+                "icon": "diamond"
+            },
+            {
+                "time": "13:30",
+                "title": "Lunch: The Grove / Farmers Market",
+                "location": "The Grove",
+                "mapLink": "",
+                "icon": "lunch_dining"
+            },
+            {
+                "time": "15:00",
+                "title": "Hollywood Walk of Fame",
+                "location": "Hollywood Blvd",
+                "mapLink": "",
+                "icon": "star"
+            },
+            {
+                "time": "16:30",
+                "title": "Head to Arena (Parking)",
+                "location": "Crypto.com Arena",
+                "mapLink": "https://www.google.com/maps/search/?api=1&query=Crypto.com+Arena",
+                "icon": "directions_car"
+            },
+            {
+                "time": "19:00",
+                "title": "Lakers vs Clippers",
+                "location": "Crypto.com Arena",
+                "mapLink": "",
+                "icon": "sports_basketball"
+            },
+            {
+                "time": "22:00",
+                "title": "Return to San Gabriel",
+                "location": "San Gabriel",
+                "mapLink": "",
+                "icon": "home"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "date": "2026-02-21",
+        "weekday": "Saturday",
+        "title": "Choose Your Adventure",
+        "location": "Santa Monica / Universal / Disney",
+        "weather": "Sunny 70°F",
+        "events": [
+            {
+                "time": "09:30",
+                "title": "Option A: Santa Monica Pier",
+                "location": "Santa Monica",
+                "mapLink": "https://www.google.com/maps/search/?api=1&query=Santa+Monica+Pier",
+                "icon": "beach_access"
+            },
+            {
+                "time": "14:00",
+                "title": "Option A: Getty Center",
+                "location": "Brentwood",
+                "mapLink": "https://www.google.com/maps/search/?api=1&query=The+Getty+Center",
+                "icon": "museum"
+            },
+            {
+                "time": "09:00",
+                "title": "Option B: Universal Studios",
+                "location": "Universal City",
+                "mapLink": "",
+                "icon": "movie"
+            },
+            {
+                "time": "08:00",
+                "title": "Option C: Disneyland",
+                "location": "Anaheim",
+                "mapLink": "",
+                "icon": "castle"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "date": "2026-02-22",
+        "weekday": "Sunday",
+        "title": "Road to Las Vegas",
+        "location": "Las Vegas",
+        "weather": "Sunny 65°F",
+        "events": [
+            {
+                "time": "10:00",
+                "title": "Checkout Airbnb",
+                "location": "San Gabriel",
+                "mapLink": "",
+                "icon": "luggage"
+            },
+            {
+                "time": "11:00",
+                "title": "Brunch: Yi Mei Deli",
+                "location": "San Gabriel",
+                "mapLink": "",
+                "icon": "breakfast_dining"
+            },
+            {
+                "time": "12:30",
+                "title": "Drive to Las Vegas",
+                "location": "I-15 North",
+                "mapLink": "",
+                "icon": "directions_car"
+            },
+            {
+                "time": "14:30",
+                "title": "Stop: Barstow Outlets",
+                "location": "Barstow",
+                "mapLink": "https://www.google.com/maps/search/?api=1&query=Outlets+at+Barstow",
+                "icon": "shopping_bag"
+            },
+            {
+                "time": "17:30",
+                "title": "Check-in: Treasure Island / Luxor",
+                "location": "Las Vegas Strip",
+                "mapLink": "",
+                "icon": "hotel"
+            },
+            {
+                "time": "19:00",
+                "title": "The Strip Walk & Dinner",
+                "location": "Las Vegas Blvd",
+                "mapLink": "",
+                "icon": "nightlife"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "date": "2026-02-23",
+        "weekday": "Monday",
+        "title": "Grand Canyon Tour",
+        "location": "Grand Canyon / Las Vegas",
+        "weather": "Sunny 50°F",
+        "events": [
+            {
+                "time": "06:00",
+                "title": "Tour Pickup",
+                "location": "Hotel Lobby",
+                "mapLink": "",
+                "icon": "directions_bus"
+            },
+            {
+                "time": "13:00",
+                "title": "Grand Canyon South Rim",
+                "location": "Grand Canyon National Park",
+                "mapLink": "",
+                "icon": "landscape"
+            },
+            {
+                "time": "20:30",
+                "title": "Return to Las Vegas",
+                "location": "Las Vegas",
+                "mapLink": "",
+                "icon": "home"
+            },
+            {
+                "time": "21:00",
+                "title": "Dinner: In-N-Out / Buffet",
+                "location": "Las Vegas",
+                "mapLink": "",
+                "icon": "fastfood"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "date": "2026-02-24",
+        "weekday": "Tuesday",
+        "title": "Return to California",
+        "location": "Ontario",
+        "weather": "Sunny 72°F",
+        "events": [
+            {
+                "time": "10:30",
+                "title": "Checkout Hotel",
+                "location": "Las Vegas",
+                "mapLink": "",
+                "icon": "luggage"
+            },
+            {
+                "time": "11:00",
+                "title": "Seven Magic Mountains",
+                "location": "S Las Vegas Blvd",
+                "mapLink": "https://www.google.com/maps/search/?api=1&query=Seven+Magic+Mountains",
+                "icon": "photo_camera"
+            },
+            {
+                "time": "13:00",
+                "title": "Drive to Ontario",
+                "location": "I-15 South",
+                "mapLink": "",
+                "icon": "directions_car"
+            },
+            {
+                "time": "16:00",
+                "title": "Ontario Mills Outlets",
+                "location": "Ontario",
+                "mapLink": "https://www.google.com/maps/search/?api=1&query=Ontario+Mills",
+                "icon": "shopping_bag"
+            },
+            {
+                "time": "19:00",
+                "title": "Check-in: Hotel d'Lins",
+                "location": "3400 Shelby St, Ontario, CA 91764",
+                "mapLink": "",
+                "icon": "hotel"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "date": "2026-02-25",
+        "weekday": "Wednesday",
+        "title": "Departure",
+        "location": "ONT Airport",
+        "weather": "Sunny 72°F",
+        "events": [
+            {
+                "time": "10:00",
+                "title": "Checkout",
+                "location": "Hotel d'Lins",
+                "mapLink": "",
+                "icon": "luggage"
+            },
+            {
+                "time": "11:00",
+                "title": "Rancho Santa Ana Botanic Garden",
+                "location": "Claremont",
+                "mapLink": "https://www.google.com/maps/search/?api=1&query=California+Botanic+Garden",
+                "icon": "park"
+            },
+            {
+                "time": "15:00",
+                "title": "Early Dinner / Last Shopping",
+                "location": "Ontario",
+                "mapLink": "",
+                "icon": "restaurant"
+            },
+            {
+                "time": "19:30",
+                "title": "Return Rental Car",
+                "location": "ONT Rental Car Center",
+                "mapLink": "",
+                "icon": "no_crash"
+            },
+            {
+                "time": "20:30",
+                "title": "Airport Check-in",
+                "location": "ONT Airport",
+                "mapLink": "",
+                "icon": "flight_takeoff"
+            },
+            {
+                "time": "22:50",
+                "title": "Flight CI23 Departure",
+                "location": "ONT Airport",
+                "mapLink": "",
+                "icon": "airplanemode_active"
+            }
+        ]
+    }
+]
