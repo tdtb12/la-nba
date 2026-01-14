@@ -10,6 +10,7 @@
             {
                 "time": "16:50",
                 "title": "Arrive ONT Airport",
+                "description": "抵達安大略機場，辦理入境手續。",
                 "location": "Ontario International Airport",
                 "mapLink": "https://maps.google.com/?q=ONT+Airport",
                 "icon": "flight_land"
@@ -17,6 +18,7 @@
             {
                 "time": "18:00",
                 "title": "Pick up Rental Car",
+                "description": "前往 Rental Car Center 取車。",
                 "location": "Rental Car Center",
                 "mapLink": "",
                 "icon": "directions_car"
@@ -24,6 +26,7 @@
             {
                 "time": "19:00",
                 "title": "Check-in Airbnb",
+                "description": "8753 East Arcadia Avenue, San Gabriel, CA 91775",
                 "location": "8753 East Arcadia Avenue, San Gabriel",
                 "mapLink": "https://www.google.com/maps/search/?api=1&query=8753+East+Arcadia+Avenue+San+Gabriel+CA",
                 "icon": "home"
@@ -31,6 +34,7 @@
             {
                 "time": "20:00",
                 "title": "Dinner: Golden Deli / 101 Noodle Express",
+                "description": "晚餐享用越南河粉(Golden Deli) 或 牛肉捲餅(101 Noodle Express)。",
                 "location": "San Gabriel",
                 "mapLink": "https://www.google.com/maps/search/?api=1&query=Golden+Deli+San+Gabriel",
                 "icon": "restaurant"
@@ -48,6 +52,7 @@
             {
                 "time": "10:00",
                 "title": "Breakfast: Vroman's / Great Maple",
+                "description": "Vroman's Bookstore 旁咖啡廳或 Great Maple 享用早餐。",
                 "location": "Pasadena",
                 "mapLink": "",
                 "icon": "coffee"
@@ -55,6 +60,7 @@
             {
                 "time": "11:00",
                 "title": "The Huntington Library",
+                "description": "參觀杭廷頓圖書館 & 植物園，享受加州陽光。",
                 "location": "The Huntington",
                 "mapLink": "https://www.google.com/maps/search/?api=1&query=The+Huntington+Library",
                 "icon": "local_library"
@@ -62,6 +68,7 @@
             {
                 "time": "14:00",
                 "title": "Old Pasadena Shopping",
+                "description": "在 Colorado Blvd 逛街散步。",
                 "location": "Colorado Blvd",
                 "mapLink": "",
                 "icon": "shopping_bag"
@@ -69,6 +76,7 @@
             {
                 "time": "16:00",
                 "title": "Trader Joe's",
+                "description": "(South Pasadena) 採買零食/補給。",
                 "location": "South Pasadena",
                 "mapLink": "https://www.google.com/maps/search/?api=1&query=Trader+Joe's+South+Pasadena",
                 "icon": "shopping_cart"
@@ -76,6 +84,7 @@
             {
                 "time": "17:30",
                 "title": "Super King Market",
+                "description": "(Altadena) 體驗當地便宜生鮮超市。",
                 "location": "Altadena",
                 "mapLink": "https://www.google.com/maps/search/?api=1&query=Super+King+Market+Altadena",
                 "icon": "store"
@@ -83,6 +92,7 @@
             {
                 "time": "19:00",
                 "title": "Dinner: Sam Woo BBQ / Boiling Point",
+                "description": "回 San Gabriel 吃三和燒臘或沸點臭臭鍋。",
                 "location": "San Gabriel",
                 "mapLink": "",
                 "icon": "restaurant"
@@ -100,6 +110,7 @@
             {
                 "time": "09:30",
                 "title": "Breakfast: Eggslut",
+                "description": "Grand Central Market 必吃滑蛋漢堡 (Eggslut)。",
                 "location": "Grand Central Market",
                 "mapLink": "https://www.google.com/maps/search/?api=1&query=Grand+Central+Market",
                 "icon": "egg_alt"
@@ -107,6 +118,7 @@
             {
                 "time": "11:30",
                 "title": "Beverly Hills & Rodeo Drive",
+                "description": "參觀比佛利山莊與 Rodeo Drive 名店街。",
                 "location": "Beverly Hills",
                 "mapLink": "",
                 "icon": "diamond"
@@ -114,6 +126,7 @@
             {
                 "time": "13:30",
                 "title": "Lunch: The Grove / Farmers Market",
+                "description": "在 The Grove 購物中心或農夫市場享用午餐。",
                 "location": "The Grove",
                 "mapLink": "",
                 "icon": "lunch_dining"
@@ -121,6 +134,7 @@
             {
                 "time": "15:00",
                 "title": "Hollywood Walk of Fame",
+                "description": "漫步好萊塢星光大道。",
                 "location": "Hollywood Blvd",
                 "mapLink": "",
                 "icon": "star"
@@ -128,6 +142,7 @@
             {
                 "time": "16:30",
                 "title": "Head to Arena (Parking)",
+                "description": "前往 Crypto.com Arena，建議提早停車。",
                 "location": "Crypto.com Arena",
                 "mapLink": "https://www.google.com/maps/search/?api=1&query=Crypto.com+Arena",
                 "icon": "directions_car"
@@ -135,6 +150,7 @@
             {
                 "time": "19:00",
                 "title": "Lakers vs Clippers",
+                "description": "觀賞湖人隊對快艇隊球賽 (GAME START)。",
                 "location": "Crypto.com Arena",
                 "mapLink": "",
                 "icon": "sports_basketball"
@@ -142,6 +158,7 @@
             {
                 "time": "22:00",
                 "title": "Return to San Gabriel",
+                "description": "返回 San Gabriel 休息。",
                 "location": "San Gabriel",
                 "mapLink": "",
                 "icon": "home"
@@ -159,6 +176,7 @@
             {
                 "time": "09:30",
                 "title": "Option A: Santa Monica Pier",
+                "description": "經典海濱文藝行程：聖塔莫尼卡碼頭 & 第三街徒步區。",
                 "location": "Santa Monica",
                 "mapLink": "https://www.google.com/maps/search/?api=1&query=Santa+Monica+Pier",
                 "icon": "beach_access"
@@ -166,6 +184,7 @@
             {
                 "time": "14:00",
                 "title": "Option A: Getty Center",
+                "description": "參觀蓋提中心 (需預約)，欣賞藝術與風景。",
                 "location": "Brentwood",
                 "mapLink": "https://www.google.com/maps/search/?api=1&query=The+Getty+Center",
                 "icon": "museum"
@@ -173,6 +192,7 @@
             {
                 "time": "09:00",
                 "title": "Option B: Universal Studios",
+                "description": "環球影城一日遊：瑪利歐、哈利波特區。",
                 "location": "Universal City",
                 "mapLink": "",
                 "icon": "movie"
@@ -180,6 +200,7 @@
             {
                 "time": "08:00",
                 "title": "Option C: Disneyland",
+                "description": "迪士尼樂園或冒險樂園一日遊。",
                 "location": "Anaheim",
                 "mapLink": "",
                 "icon": "castle"
@@ -197,6 +218,7 @@
             {
                 "time": "10:00",
                 "title": "Checkout Airbnb",
+                "description": "辦理退房，行李上車。",
                 "location": "San Gabriel",
                 "mapLink": "",
                 "icon": "luggage"
@@ -204,6 +226,7 @@
             {
                 "time": "11:00",
                 "title": "Brunch: Yi Mei Deli",
+                "description": "在 San Gabriel 吃早午餐 (如: 義美豆漿)。",
                 "location": "San Gabriel",
                 "mapLink": "",
                 "icon": "breakfast_dining"
@@ -211,6 +234,7 @@
             {
                 "time": "12:30",
                 "title": "Drive to Las Vegas",
+                "description": "出發前往 Las Vegas，車程約 4 小時。",
                 "location": "I-15 North",
                 "mapLink": "",
                 "icon": "directions_car"
@@ -218,6 +242,7 @@
             {
                 "time": "14:30",
                 "title": "Stop: Barstow Outlets",
+                "description": "中途停靠 Outlets at Barstow 休息/購物。",
                 "location": "Barstow",
                 "mapLink": "https://www.google.com/maps/search/?api=1&query=Outlets+at+Barstow",
                 "icon": "shopping_bag"
@@ -225,6 +250,7 @@
             {
                 "time": "17:30",
                 "title": "Check-in: Treasure Island / Luxor",
+                "description": "抵達 Las Vegas，辦理飯店入住。",
                 "location": "Las Vegas Strip",
                 "mapLink": "",
                 "icon": "hotel"
@@ -232,6 +258,7 @@
             {
                 "time": "19:00",
                 "title": "The Strip Walk & Dinner",
+                "description": "參觀 Bellagio 水舞、Venetian 天空、Sphere 外觀。",
                 "location": "Las Vegas Blvd",
                 "mapLink": "",
                 "icon": "nightlife"
@@ -249,6 +276,7 @@
             {
                 "time": "06:00",
                 "title": "Tour Pickup",
+                "description": "飯店集合，參加 KKday Grand Canyon South Rim 行程。",
                 "location": "Hotel Lobby",
                 "mapLink": "",
                 "icon": "directions_bus"
@@ -256,6 +284,7 @@
             {
                 "time": "13:00",
                 "title": "Grand Canyon South Rim",
+                "description": "大峽谷南緣觀光 (Mather Point, Yavapai Point)。",
                 "location": "Grand Canyon National Park",
                 "mapLink": "",
                 "icon": "landscape"
@@ -263,6 +292,7 @@
             {
                 "time": "20:30",
                 "title": "Return to Las Vegas",
+                "description": "返回 Las Vegas 下車。",
                 "location": "Las Vegas",
                 "mapLink": "",
                 "icon": "home"
@@ -270,6 +300,7 @@
             {
                 "time": "21:00",
                 "title": "Dinner: In-N-Out / Buffet",
+                "description": "晚餐享用 In-N-Out 或賭城 Buffet。",
                 "location": "Las Vegas",
                 "mapLink": "",
                 "icon": "fastfood"
@@ -287,6 +318,7 @@
             {
                 "time": "10:30",
                 "title": "Checkout Hotel",
+                "description": "辦理退房手續。",
                 "location": "Las Vegas",
                 "mapLink": "",
                 "icon": "luggage"
@@ -294,6 +326,7 @@
             {
                 "time": "11:00",
                 "title": "Seven Magic Mountains",
+                "description": "前往七彩石 (Seven Magic Mountains) 拍照。",
                 "location": "S Las Vegas Blvd",
                 "mapLink": "https://www.google.com/maps/search/?api=1&query=Seven+Magic+Mountains",
                 "icon": "photo_camera"
@@ -301,6 +334,7 @@
             {
                 "time": "13:00",
                 "title": "Drive to Ontario",
+                "description": "驅車返回 Ontario，車程約 3.5 - 4 小時。",
                 "location": "I-15 South",
                 "mapLink": "",
                 "icon": "directions_car"
@@ -308,6 +342,7 @@
             {
                 "time": "16:00",
                 "title": "Ontario Mills Outlets",
+                "description": "安大略米爾斯室內 Outlet 最後衝刺購物。",
                 "location": "Ontario",
                 "mapLink": "https://www.google.com/maps/search/?api=1&query=Ontario+Mills",
                 "icon": "shopping_bag"
@@ -315,6 +350,7 @@
             {
                 "time": "19:00",
                 "title": "Check-in: Hotel d'Lins",
+                "description": "入住 Hotel d'Lins Ontario Airport。",
                 "location": "3400 Shelby St, Ontario, CA 91764",
                 "mapLink": "",
                 "icon": "hotel"
@@ -332,6 +368,7 @@
             {
                 "time": "10:00",
                 "title": "Checkout",
+                "description": "辦理 Hotel d'Lins 退房。",
                 "location": "Hotel d'Lins",
                 "mapLink": "",
                 "icon": "luggage"
@@ -339,6 +376,7 @@
             {
                 "time": "11:00",
                 "title": "Rancho Santa Ana Botanic Garden",
+                "description": "前往 Claremont 的植物園散步。",
                 "location": "Claremont",
                 "mapLink": "https://www.google.com/maps/search/?api=1&query=California+Botanic+Garden",
                 "icon": "park"
@@ -346,6 +384,7 @@
             {
                 "time": "15:00",
                 "title": "Early Dinner / Last Shopping",
+                "description": "在機場附近用餐或最後補貨。",
                 "location": "Ontario",
                 "mapLink": "",
                 "icon": "restaurant"
@@ -353,6 +392,7 @@
             {
                 "time": "19:30",
                 "title": "Return Rental Car",
+                "description": "前往 ONT Rental Car Center 還車。",
                 "location": "ONT Rental Car Center",
                 "mapLink": "",
                 "icon": "no_crash"
@@ -360,6 +400,7 @@
             {
                 "time": "20:30",
                 "title": "Airport Check-in",
+                "description": "安大略機場櫃檯報到。",
                 "location": "ONT Airport",
                 "mapLink": "",
                 "icon": "flight_takeoff"
@@ -367,6 +408,7 @@
             {
                 "time": "22:50",
                 "title": "Flight CI23 Departure",
+                "description": "搭乘中華航空 CI23 返台。",
                 "location": "ONT Airport",
                 "mapLink": "",
                 "icon": "airplanemode_active"
