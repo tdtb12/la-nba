@@ -16,7 +16,15 @@ export default function Login() {
 
     const handleLogin = async () => {
         try {
-            await login();
+            const result = await login();
+            const user = result.user;
+            await setDoc(doc(db, "users", user.uid), {
+                uid: user.uid,
+                displayName: user.displayName,
+                email: user.email,
+                photoURL: user.photoURL,
+                lastLogin: new Date()
+            }, { merge: true });
             navigate("/overview");
         } catch (error) {
             console.error("Failed to log in", error);

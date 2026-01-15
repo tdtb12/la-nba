@@ -5,7 +5,8 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Itinerary from "./pages/Itinerary";
 import DayDetail from "./pages/DayDetail";
-import AddExpense from "./pages/AddExpense"; // We will create this next
+import AddExpense from "./pages/AddExpense";
+import ExpenseDetails from "./pages/ExpenseDetails";
 
 function App() {
   return (
@@ -16,7 +17,9 @@ function App() {
           <Route path="/overview" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/itinerary" element={<ProtectedRoute><Itinerary /></ProtectedRoute>} />
           <Route path="/day/:id" element={<ProtectedRoute><DayDetail /></ProtectedRoute>} />
+
           <Route path="/add-expense" element={<ProtectedRoute><AddExpense /></ProtectedRoute>} />
+          <Route path="/expenses" element={<ProtectedRoute><ExpenseDetails /></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
     </Router>

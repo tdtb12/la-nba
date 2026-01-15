@@ -17,15 +17,53 @@ export default function Dashboard() {
             if (!currentUser) return;
 
             try {
-                // Query expenses where paidBy is current user OR splitWith contains current user
-                // simplified for now: just fetch all and filter in client or just paidBy
-                const q = query(collection(db, "expenses"), where("paidBy", "==", currentUser.uid));
-                const querySnapshot = await getDocs(q);
-                let total = 0;
-                querySnapshot.forEach((doc) => {
-                    total += parseFloat(doc.data().amount);
+                // 1. Expenses paid by current user
+                const paidByQuery = query(collection(db, "expenses"), where("paidBy", "==", currentUser.uid));
+                const paidBySnapshot = await getDocs(paidByQuery);
+
+                // 2. Expenses split with current user
+                const splitWithQuery = query(collection(db, "expenses"), where("splitWith", "array-contains", currentUser.uid));
+                const splitWithSnapshot = await getDocs(splitWithQuery);
+
+                let totalUSD = 0;
+
+                // Helper to process doc
+                const processExpense = (doc) => {
+                    const data = doc.data();
+                    const amount = parseFloat(data.amount) || 0;
+                    const currency = data.currency || "USD";
+                    const splitWith = data.splitWith || [];
+                    // Total people = Payer + Splitters (assuming payer is always included in the split group count based on AddExpense logic)
+                    const totalPeople = splitWith.length + 1;
+
+                    const myShare = amount / totalPeople;
+
+                    if (currency === "TWD") {
+                        totalUSD += myShare / 32; // Fixed rate for now
+                    } else {
+                        totalUSD += myShare;
+                    }
+                };
+
+                // Use a Set to avoid duplicates if any (though logic suggests they shouldn't overlap usually, 
+                // unless I can split with myself which AddExpense prevents)
+                const processedIds = new Set();
+
+                paidBySnapshot.forEach((doc) => {
+                    if (!processedIds.has(doc.id)) {
+                        processExpense(doc);
+                        processedIds.add(doc.id);
+                    }
                 });
-                setTotalExpense(total);
+
+                splitWithSnapshot.forEach((doc) => {
+                    if (!processedIds.has(doc.id)) {
+                        processExpense(doc);
+                        processedIds.add(doc.id);
+                    }
+                });
+
+                setTotalExpense(totalUSD);
             } catch (error) {
                 console.error("Error fetching expenses:", error);
             }
@@ -79,7 +117,7 @@ export default function Dashboard() {
                                     <span className="text-gray-600 text-[10px] font-medium uppercase tracking-tighter">TWD</span>
                                 </div>
                             </div>
-                            <button onClick={() => navigate('/add-expense')} className="mt-4 w-full bg-primary text-background-dark py-3 rounded-xl font-bold text-xs uppercase tracking-widest active:scale-[0.98] transition-transform">
+                            <button onClick={() => navigate('/expenses')} className="mt-4 w-full bg-primary text-background-dark py-3 rounded-xl font-bold text-xs uppercase tracking-widest active:scale-[0.98] transition-transform">
                                 查看明細
                             </button>
                         </div>
