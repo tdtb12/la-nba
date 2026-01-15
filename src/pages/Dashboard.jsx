@@ -8,8 +8,19 @@ import { db } from "../firebase"; // Import db
 
 export default function Dashboard() {
     const navigate = useNavigate();
-    const { currentUser } = useAuth();
+    const { currentUser, logout } = useAuth(); // Get logout function
     const [totalExpense, setTotalExpense] = useState(0);
+
+    const handleLogout = async () => {
+        if (window.confirm("Are you sure you want to log out?")) {
+            try {
+                await logout();
+                navigate("/");
+            } catch (error) {
+                console.error("Failed to log out", error);
+            }
+        }
+    };
 
     // Calculate total expense for current user
     useEffect(() => {
@@ -73,19 +84,19 @@ export default function Dashboard() {
     }, [currentUser]);
 
     return (
-        <div className="relative w-full max-w-[430px] mx-auto flex flex-col bg-background-dark min-h-screen pb-24 font-display">
+        <div className="relative w-full max-w-[430px] mx-auto flex flex-col bg-background-dark min-h-screen pb-28 font-display shadow-2xl">
             {/* Header */}
-            <header className="sticky top-0 z-50 flex items-center bg-background-dark/80 ios-blur p-4 border-b border-white/5">
+            <header className="sticky top-0 z-50 flex items-center bg-lakers-purple ios-blur p-4 border-b border-primary/20">
                 <div className="flex size-10 items-center justify-center cursor-pointer active:opacity-50 transition-opacity">
-                    <span className="material-symbols-outlined text-gray-400">menu</span>
+                    <span className="material-symbols-outlined text-primary">chevron_left</span>
                 </div>
-                <h1 className="text-white text-base font-bold flex-1 text-center tracking-tight">洛杉磯總覽</h1>
-                <div className="flex size-10 items-center justify-center">
+                <h1 className="text-primary text-base font-extrabold flex-1 text-center tracking-tight uppercase">LA Trip Overview</h1>
+                <div onClick={handleLogout} className="flex size-10 items-center justify-center cursor-pointer hover:opacity-80 transition-opacity" title="Click to Logout">
                     {currentUser?.photoURL ? (
-                        <img src={currentUser.photoURL} alt="User" className="size-8 rounded-full border border-primary/30" />
+                        <img src={currentUser.photoURL} alt="User" className="size-8 rounded-full border-2 border-primary shadow-lg" />
                     ) : (
-                        <button className="size-8 rounded-full bg-primary/20 text-primary flex items-center justify-center border border-primary/30">
-                            <span className="material-symbols-outlined text-[20px]">person</span>
+                        <button className="size-8 rounded-full bg-primary text-lakers-purple flex items-center justify-center border-2 border-primary shadow-lg">
+                            <span className="material-symbols-outlined text-[20px] fill-icon">person</span>
                         </button>
                     )}
                 </div>
@@ -94,31 +105,31 @@ export default function Dashboard() {
             <main className="flex-1 px-5 pt-6 space-y-6">
                 {/* Expense Card */}
                 <section>
-                    <div className="relative rounded-2xl bg-card-dark border border-white/10 overflow-hidden shadow-xl">
+                    <div className="relative rounded-2xl bg-card-dark border-4 border-primary overflow-hidden shadow-2xl">
                         <div className="absolute top-0 right-0 p-4 z-20">
-                            <div className="flex items-center gap-1 bg-black/40 px-2 py-1 rounded-full border border-white/10">
+                            <div className="flex items-center gap-1 bg-lakers-purple/90 px-2 py-1 rounded-full border border-primary/30">
                                 <span className="material-symbols-outlined text-primary text-[14px]">sync_alt</span>
-                                <span className="text-[10px] font-bold text-white uppercase tracking-wider">USD/TWD</span>
+                                <span className="text-[10px] font-bold text-white uppercase tracking-wider">USD / TWD</span>
                             </div>
                         </div>
                         <div className="relative w-full h-32 bg-center bg-cover" style={{ backgroundImage: 'url("https://lh3.googleusercontent.com/aida-public/AB6AXuBbIfNtpxEJBkZ8nYoWabGRJZepciIRWK4jMVZPfjItvYa9li7pRYX8TrXIArgl87Yh5Djf_pEfmr2eoPqW639TGnFeWm1r_ysOIOaQQqGTVrJJjwadrfrB5b95zhiANEEoHRW2FyWshCDf1NoPpUapy6OL41TA8a18js9_Fr-xuM8NOXE1PF8U-6O7Jmwvl0b8Qnj9tgGZxzjVmHu1Bc4Iu4KbnV02UfiX1yKMc3IxFtk8NDEOTFYIUZ86hblVP0Twpk_vhw7yA00")' }}>
-                            <div className="absolute inset-0 bg-gradient-to-t from-card-dark via-card-dark/40 to-transparent"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-card-dark via-card-dark/20 to-transparent"></div>
                         </div>
                         <div className="px-5 pb-5 -mt-6 relative z-10 flex flex-col">
-                            <span className="text-primary text-[10px] font-bold tracking-[0.15em] uppercase mb-1">我的總花費</span>
-                            <div className="flex flex-col gap-1">
+                            <span className="text-lakers-purple text-[11px] font-black tracking-[0.15em] uppercase mb-1 bg-primary/90 self-start px-2 py-0.5 rounded">Total My Expenses</span>
+                            <div className="flex flex-col gap-1 mt-2">
                                 <div className="flex items-baseline gap-2">
-                                    <p className="text-white text-3xl font-bold tracking-tight">${totalExpense.toFixed(2)}</p>
-                                    <span className="text-gray-500 text-sm font-medium">USD</span>
+                                    <p className="text-lakers-purple text-4xl font-black tracking-tighter">${totalExpense.toFixed(2)}</p>
+                                    <span className="text-lakers-purple/60 text-sm font-bold">USD</span>
                                 </div>
-                                <div className="flex items-center gap-2 mt-0.5 opacity-80">
-                                    <span className="material-symbols-outlined text-[14px] text-gray-400">trending_up</span>
-                                    <p className="text-gray-400 text-lg font-semibold leading-none">≈ NT$ {(totalExpense * 32).toLocaleString()}</p>
-                                    <span className="text-gray-600 text-[10px] font-medium uppercase tracking-tighter">TWD</span>
+                                <div className="flex items-center gap-2 mt-0.5">
+                                    <span className="material-symbols-outlined text-[16px] text-lakers-purple/50">payments</span>
+                                    <p className="text-lakers-purple/80 text-xl font-bold leading-none">≈ NT$ {(totalExpense * 32).toLocaleString()}</p>
+                                    <span className="text-lakers-purple/40 text-[10px] font-bold uppercase tracking-tighter">TWD</span>
                                 </div>
                             </div>
-                            <button onClick={() => navigate('/expenses')} className="mt-4 w-full bg-primary text-background-dark py-3 rounded-xl font-bold text-xs uppercase tracking-widest active:scale-[0.98] transition-transform">
-                                查看明細
+                            <button onClick={() => navigate('/expenses')} className="mt-5 w-full bg-primary text-lakers-purple py-4 rounded-xl font-black text-xs uppercase tracking-widest active:scale-[0.98] transition-transform shadow-lg border-b-4 border-yellow-600">
+                                View Expense Details
                             </button>
                         </div>
                     </div>
@@ -126,55 +137,59 @@ export default function Dashboard() {
 
                 {/* Weather Status */}
                 <section className="grid grid-cols-1 gap-4">
-                    <div className="flex items-center justify-between bg-gradient-to-br from-blue-600/20 to-primary/5 p-4 rounded-2xl border border-white/5 ios-blur">
+                    <div className="flex items-center justify-between bg-gradient-to-br from-lakers-purple to-[#3b1a5a] p-5 rounded-2xl border border-primary/20 shadow-xl">
                         <div className="flex items-center gap-4">
-                            <div className="size-12 bg-white/10 rounded-xl flex items-center justify-center">
-                                <span className="material-symbols-outlined text-primary text-3xl fill-icon">partly_cloudy_day</span>
+                            <div className="size-14 bg-primary rounded-2xl flex items-center justify-center shadow-inner">
+                                <span className="material-symbols-outlined text-lakers-purple text-4xl fill-icon">partly_cloudy_day</span>
                             </div>
                             <div>
-                                <p className="text-white text-lg font-bold">24°C <span className="text-gray-400 font-normal">晴朗</span></p>
-                                <p className="text-gray-500 text-[11px] font-medium flex items-center gap-1">
-                                    <span className="material-symbols-outlined text-[12px]">location_on</span> 洛杉磯, CA
+                                <p className="text-white text-xl font-black">74°F <span className="text-primary font-medium ml-1">Sunny</span></p>
+                                <p className="text-primary/70 text-[11px] font-bold flex items-center gap-1 uppercase tracking-wider">
+                                    <span className="material-symbols-outlined text-[12px]">location_on</span> Los Angeles, CA
                                 </p>
                             </div>
                         </div>
                         <div className="text-right">
-                            <p className="text-primary text-[10px] font-bold uppercase tracking-wider mb-1">日落</p>
-                            <p className="text-white/80 text-xs font-semibold">17:45</p>
+                            <p className="text-primary text-[10px] font-black uppercase tracking-wider mb-1">Golden Hour</p>
+                            <p className="text-white/90 text-xs font-bold">Starts in 2h 15m</p>
                         </div>
                     </div>
                 </section>
 
                 {/* Itinerary List */}
-                <div className="flex items-center justify-between border-b border-white/5 pb-2">
-                    <h2 className="text-white text-xl font-bold tracking-tight">8 天行程</h2>
-                    <div className="flex items-center gap-1 bg-white/5 px-2 py-1 rounded-md">
-                        <span className="material-symbols-outlined text-[14px] text-primary">calendar_month</span>
-                        <span className="text-gray-400 text-[10px] font-bold uppercase tracking-wider">2/18 - 2/25</span>
+                <div className="flex items-center justify-between border-b-2 border-lakers-purple/30 pb-3">
+                    <h2 className="text-white text-xl font-black tracking-tight uppercase">8-Day Itinerary</h2>
+                    <div className="flex items-center gap-1 bg-lakers-purple px-3 py-1.5 rounded-full border border-primary/30">
+                        <span className="material-symbols-outlined text-[16px] text-primary fill-icon">calendar_month</span>
+                        <span className="text-primary text-[10px] font-black uppercase tracking-wider">Oct 12 - 19</span>
                     </div>
                 </div>
-                <section className="space-y-3 pb-8">
-                    {itineraryData.map((day) => (
+                <section className="space-y-4 pb-8">
+                    {itineraryData.map((day, index) => (
                         <div
                             key={day.id}
                             onClick={() => navigate(`/day/${day.id}`)}
-                            className={`flex items-center gap-4 border border-white/5 p-4 rounded-2xl active:bg-white/5 transition-colors cursor-pointer ${day.id === 1 ? 'bg-primary/10 border-primary/20' : 'bg-card-dark'}`}
+                            className={`flex items-center gap-4 border p-4 rounded-2xl active:bg-white/5 transition-colors cursor-pointer shadow-md ${day.id === 1 ? 'bg-lakers-purple/10 border-l-4 border-primary' : 'bg-card-dark border-white/5'}`}
                         >
-                            <div className={`flex flex-col items-center justify-center size-14 rounded-xl ${day.id === 1 ? 'bg-primary text-background-dark' : 'bg-white/5 text-gray-400'}`}>
+                            <div className={`flex flex-col items-center justify-center size-14 rounded-xl shadow-md ${day.id === 1 ? 'bg-primary text-lakers-purple' : 'bg-white/5 text-gray-400'}`}>
                                 <span className="text-[10px] font-black uppercase leading-none mb-0.5">2月</span>
-                                <span className="text-xl font-bold leading-none">{parseInt(day.date.split('-')[2])}</span>
+                                <span className={`font-black leading-none ${day.id === 1 ? 'text-2xl' : 'text-xl'}`}>{parseInt(day.date.split('-')[2])}</span>
                             </div>
                             <div className="flex-1">
                                 <div className="flex items-center gap-2 mb-0.5">
-                                    <span className={`${day.id === 1 ? 'text-primary' : 'text-gray-500'} text-[10px] font-black uppercase tracking-widest`}>第 0{day.id} 天</span>
-                                    {day.id === 1 && <span className="size-1 bg-primary rounded-full"></span>}
-                                    <span className={`${day.id === 1 ? 'text-primary' : 'text-gray-500'} text-[10px] font-medium uppercase`}>{day.location}</span>
+                                    <span className={`${day.id === 1 ? 'text-primary' : 'text-gray-500'} text-[10px] font-black uppercase tracking-widest`}>Day 0{day.id}</span>
+                                    {day.id === 1 && <span className="size-1.5 bg-primary rounded-full"></span>}
+                                    {day.id === 1 && <span className="text-primary text-[10px] font-bold uppercase">{day.location}</span>}
                                 </div>
-                                <p className="text-white text-base font-bold leading-snug">{day.title}</p>
+                                <p className="text-white text-base font-extrabold leading-snug">{day.title}</p>
                             </div>
-                            <span className={`material-symbols-outlined ${day.id === 1 ? 'text-primary' : 'text-gray-700'}`}>arrow_forward_ios</span>
+                            <span className={`material-symbols-outlined ${day.id === 1 ? 'text-primary font-bold' : 'text-gray-700'}`}>arrow_forward_ios</span>
                         </div>
                     ))}
+                    <button className="w-full py-6 text-primary text-[11px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-2 bg-lakers-purple/5 rounded-2xl border border-primary/10 mt-2">
+                        Expand All 8 Days
+                        <span className="material-symbols-outlined text-[18px]">keyboard_double_arrow_down</span>
+                    </button>
                 </section>
             </main>
 

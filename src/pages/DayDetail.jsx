@@ -30,14 +30,16 @@ export default function DayDetail() {
             <main className="max-w-md mx-auto px-4 space-y-6">
                 {/* Header Bento Stats */}
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="col-span-1 bg-white dark:bg-card-dark p-5 rounded-xl border border-slate-100 dark:border-white/5 shadow-sm">
+                    <div className="col-span-1 lakers-gradient p-5 rounded-xl shadow-lg text-white">
                         <div className="flex items-center gap-2 mb-3">
-                            <span className="material-symbols-outlined text-primary">cloudy_snowing</span>
-                            <span className="text-xs font-semibold opacity-60 uppercase">Weather</span>
+                            <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                                <span className="material-symbols-outlined text-white text-[20px]">cloudy_snowing</span>
+                            </div>
+                            <span className="text-xs font-bold opacity-80 uppercase tracking-wider">Weather</span>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-2xl font-bold">{dayData.weather.split(' ')[1]}</span>
-                            <span className="text-xs text-green-500 font-medium">{dayData.weather.split(' ')[0]}</span>
+                            <span className="text-3xl font-black">{dayData.weather.split(' ')[1]}</span>
+                            <span className="text-xs text-white/80 font-bold uppercase tracking-widest">{dayData.weather.split(' ')[0]}</span>
                         </div>
                     </div>
                     <div className="col-span-1 bg-white dark:bg-card-dark p-5 rounded-xl border border-slate-100 dark:border-white/5 shadow-sm">

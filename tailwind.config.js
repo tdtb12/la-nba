@@ -8,13 +8,12 @@ export default {
     theme: {
         extend: {
             colors: {
-                "primary": "#daa749",
-                "background-light": "#f7f5f3",
-                "background-dark": "#121212",
-                "card-dark": "#1e1e1e",
-                "accent-muted": "#605239",
-                "lakers-purple": "#552583",
+                "primary": "#FDB927", // Lakers Gold
                 "lakers-gold": "#FDB927",
+                "lakers-purple": "#552583", // Lakers Purple
+                "background-light": "#f7f5f3",
+                "background-dark": "#0A0A0A",
+                "card-dark": "#1A1A1A",
             },
             fontFamily: {
                 "display": ["Epilogue", "sans-serif"]
