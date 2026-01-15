@@ -3,7 +3,7 @@
         "id": 1,
         "date": "2026-02-18",
         "weekday": "Wednesday",
-        "title": "Arrival & Check-in",
+        "title": "抵達與入住",
         "location": "San Gabriel",
         "weather": "Sunny 72°F",
         "events": [
@@ -45,7 +45,7 @@
         "id": 2,
         "date": "2026-02-19",
         "weekday": "Thursday",
-        "title": "Pasadena Culture & Jet Lag",
+        "title": "Pasadena 文化巡禮 & 調整時差",
         "location": "Pasadena",
         "weather": "Sunny 75°F",
         "events": [
@@ -103,7 +103,7 @@
         "id": 3,
         "date": "2026-02-20",
         "weekday": "Friday",
-        "title": "Lakers Game Day & Hollywood",
+        "title": "🏀 GAME DAY - DTLA & Hollywood",
         "location": "DTLA / Hollywood",
         "weather": "Sunny 74°F",
         "events": [
@@ -169,7 +169,7 @@
         "id": 4,
         "date": "2026-02-21",
         "weekday": "Saturday",
-        "title": "Choose Your Adventure",
+        "title": "自由選擇行程 (Choose Your Adventure)",
         "location": "Santa Monica / Universal / Disney",
         "weather": "Sunny 70°F",
         "events": [
@@ -211,7 +211,7 @@
         "id": 5,
         "date": "2026-02-22",
         "weekday": "Sunday",
-        "title": "Road to Las Vegas",
+        "title": "前往賭城 Las Vegas",
         "location": "Las Vegas",
         "weather": "Sunny 65°F",
         "events": [
@@ -269,7 +269,7 @@
         "id": 6,
         "date": "2026-02-23",
         "weekday": "Monday",
-        "title": "Grand Canyon Tour",
+        "title": "🏜️ 大峽谷一日遊 (KKday Tour)",
         "location": "Grand Canyon / Las Vegas",
         "weather": "Sunny 50°F",
         "events": [
@@ -311,7 +311,7 @@
         "id": 7,
         "date": "2026-02-24",
         "weekday": "Tuesday",
-        "title": "Return to California",
+        "title": "返回加州 & 購物",
         "location": "Ontario",
         "weather": "Sunny 72°F",
         "events": [
@@ -361,7 +361,7 @@
         "id": 8,
         "date": "2026-02-25",
         "weekday": "Wednesday",
-        "title": "Departure",
+        "title": "返程",
         "location": "ONT Airport",
         "weather": "Sunny 72°F",
         "events": [
