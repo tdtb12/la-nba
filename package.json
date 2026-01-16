@@ -6,7 +6,7 @@
   "homepage": "https://tdtb12.github.io/la-nba",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/la-nba/",
+    "build": "vite build --base=/la-nba/ && node copy-404.js",
     "lint": "eslint .",
     "clean": "rimraf dist node_modules/.vite",
     "preview": "vite preview",
