@@ -92,11 +92,17 @@ export default function AddExpense() {
                                 <span className="text-primary text-3xl font-bold leading-none">{currency === "USD" ? "$" : "NT$"}</span>
                                 <input
                                     value={amount}
-                                    onChange={(e) => setAmount(e.target.value)}
+                                    onChange={(e) => {
+                                        const value = e.target.value;
+                                        // Allow only numbers and up to one decimal point
+                                        if (value === '' || /^\d*\.?\d{0,2}$/.test(value)) {
+                                            setAmount(value);
+                                        }
+                                    }}
                                     className="bg-transparent border-none text-primary text-5xl font-bold p-0 focus:ring-0 w-48 text-center placeholder:text-white/30 placeholder:font-bold"
                                     placeholder="0.00"
-                                    type="number"
-                                    step="0.01"
+                                    type="text"
+                                    inputMode="decimal"
                                 />
                             </div>
                         </div>
