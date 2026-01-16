@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import itineraryData from "../data/itinerary.json";
+import EventMap from "../components/EventMap";
 
 export default function DayDetail() {
     const { id } = useParams();
@@ -81,18 +82,7 @@ export default function DayDetail() {
                                 {/* Map Module */}
                                 {event.mapLink && (
                                     <div className="rounded-xl overflow-hidden bg-white dark:bg-card-dark border border-slate-100 dark:border-white/5 shadow-sm">
-                                        {/* Placeholder for map image - using a gradient pattern for now as we don't have dynamic map images */}
-                                        <div
-                                            className="h-32 bg-cover bg-center"
-                                            style={{
-                                                backgroundImage: `url('https://maps.googleapis.com/maps/api/staticmap?center=${encodeURIComponent(event.location)}&zoom=15&size=600x300&maptype=roadmap&style=feature:all|element:labels|visibility:off&style=feature:all|element:geometry|color:0x2c2c2c&style=feature:landscape|element:geometry|color:0x2c2c2c&style=feature:water|element:geometry|color:0x1a1a1a&key=YOUR_API_KEY_HERE_IF_YOU_HAD_ONE'), linear-gradient(45deg, #2c2c2c 25%, #333 25%, #333 50%, #2c2c2c 50%, #2c2c2c 75%, #333 75%, #333 100%)`,
-                                                backgroundSize: 'cover, 20px 20px'
-                                            }}
-                                        >
-                                            <div className="w-full h-full bg-black/10 flex items-center justify-center">
-                                                <span className="material-symbols-outlined text-white/20 text-4xl">map</span>
-                                            </div>
-                                        </div>
+                                        <EventMap mapLink={event.mapLink} />
                                         <div className="p-3 flex items-center justify-between">
                                             <span className="text-xs font-medium opacity-60 truncate max-w-[180px]">{event.location}</span>
                                             <a

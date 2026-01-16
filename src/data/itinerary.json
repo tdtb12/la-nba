@@ -12,7 +12,7 @@
                 "title": "Arrive ONT Airport",
                 "description": "抵達安大略機場，辦理入境手續。",
                 "location": "Ontario International Airport",
-                "mapLink": "https://maps.google.com/?q=ONT+Airport",
+                "mapLink": "https://www.google.com/maps/@34.0559976,-117.6006671,17z?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
                 "icon": "flight_land"
             },
             {
@@ -28,7 +28,7 @@
                 "title": "Check-in Airbnb",
                 "description": "8753 East Arcadia Avenue, San Gabriel, CA 91775",
                 "location": "8753 East Arcadia Avenue, San Gabriel",
-                "mapLink": "https://www.google.com/maps/search/?api=1&query=8753+East+Arcadia+Avenue+San+Gabriel+CA",
+                "mapLink": "https://www.google.com/maps/place/8753+E+Arcadia+Ave,+San+Gabriel,+CA+91775%E7%BE%8E%E5%9C%8B/@34.1254364,-118.0776999,17z/data=!3m1!4b1!4m5!3m4!1s0x80c2db121b2a8ea5:0xe1b50a082194721d!8m2!3d34.1254364!4d-118.0776999?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
                 "icon": "home"
             },
             {
@@ -36,7 +36,7 @@
                 "title": "Dinner: Golden Deli / 101 Noodle Express",
                 "description": "晚餐享用越南河粉(Golden Deli) 或 牛肉捲餅(101 Noodle Express)。",
                 "location": "San Gabriel",
-                "mapLink": "https://www.google.com/maps/search/?api=1&query=Golden+Deli+San+Gabriel",
+                "mapLink": "",
                 "icon": "restaurant"
             }
         ]
@@ -62,7 +62,7 @@
                 "title": "The Huntington Library",
                 "description": "參觀杭廷頓圖書館 & 植物園，享受加州陽光。",
                 "location": "The Huntington",
-                "mapLink": "https://www.google.com/maps/search/?api=1&query=The+Huntington+Library",
+                "mapLink": "https://www.google.com/maps/place/%E6%BC%A2%E5%BA%AD%E9%A0%93%E5%9C%96%E6%9B%B8%E9%A4%A8/@34.1290452,-118.1145242,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2db4d02615c73:0xb328d70c295f1904!8m2!3d34.1290452!4d-118.1145242!16zL20vMDFtcjBr?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
                 "icon": "local_library"
             },
             {
@@ -78,7 +78,7 @@
                 "title": "Trader Joe's",
                 "description": "(South Pasadena) 採買零食/補給。",
                 "location": "South Pasadena",
-                "mapLink": "https://www.google.com/maps/search/?api=1&query=Trader+Joe's+South+Pasadena",
+                "mapLink": "https://www.google.com/maps/search/Trader+Joe's+South+Pasadena/@34.1141032,-118.157228,16z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
                 "icon": "shopping_cart"
             },
             {
@@ -86,7 +86,7 @@
                 "title": "Super King Market",
                 "description": "(Altadena) 體驗當地便宜生鮮超市。",
                 "location": "Altadena",
-                "mapLink": "https://www.google.com/maps/search/?api=1&query=Super+King+Market+Altadena",
+                "mapLink": "https://www.google.com/maps/place/Super+King+Market/@34.1846991,-118.1595127,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2c25899a57b05:0xa20b9c5d1873f201!8m2!3d34.1846991!4d-118.1595127!16s%2Fg%2F1tp8_9j0?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
                 "icon": "store"
             },
             {
@@ -112,7 +112,7 @@
                 "title": "Breakfast: Eggslut",
                 "description": "Grand Central Market 必吃滑蛋漢堡 (Eggslut)。",
                 "location": "Grand Central Market",
-                "mapLink": "https://www.google.com/maps/search/?api=1&query=Grand+Central+Market",
+                "mapLink": "https://www.google.com/maps/place/Grand+Central+Market/@34.050872,-118.2490552,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2c64b8e4372e7:0x489d4efdeb06d3d8!8m2!3d34.050872!4d-118.2490552!16zL20vMDdmN3M5?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
                 "icon": "egg_alt"
             },
             {
@@ -144,7 +144,7 @@
                 "title": "Head to Arena (Parking)",
                 "description": "前往 Crypto.com Arena，建議提早停車。",
                 "location": "Crypto.com Arena",
-                "mapLink": "https://www.google.com/maps/search/?api=1&query=Crypto.com+Arena",
+                "mapLink": "https://www.google.com/maps/place/%E5%8A%A0%E5%AF%86%E8%B2%A8%E5%B9%A3%E7%B6%B2%E9%AB%94%E8%82%B2%E9%A4%A8/@34.0430175,-118.2672541,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2c7b85dea2a93:0x1ff47c3ceb7bb2d5!8m2!3d34.0430175!4d-118.2672541!16zL20vMDJrazVz?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
                 "icon": "directions_car"
             },
             {
@@ -160,7 +160,7 @@
                 "title": "Return to San Gabriel",
                 "description": "返回 San Gabriel 休息。",
                 "location": "San Gabriel",
-                "mapLink": "",
+                "mapLink": "https://www.google.com/maps/place/8753+E+Arcadia+Ave,+San+Gabriel,+CA+91775%E7%BE%8E%E5%9C%8B/@34.1254364,-118.0776999,17z/data=!3m1!4b1!4m5!3m4!1s0x80c2db121b2a8ea5:0xe1b50a082194721d!8m2!3d34.1254364!4d-118.0776999?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
                 "icon": "home"
             }
         ]
@@ -169,41 +169,17 @@
         "id": 4,
         "date": "2026-02-21",
         "weekday": "Saturday",
-        "title": "自由選擇行程 (Choose Your Adventure)",
-        "location": "Santa Monica / Universal / Disney",
+        "title": "環球影城",
+        "location": "Universal City",
         "weather": "Sunny 70°F",
         "events": [
             {
-                "time": "09:30",
-                "title": "Option A: Santa Monica Pier",
-                "description": "經典海濱文藝行程：聖塔莫尼卡碼頭 & 第三街徒步區。",
-                "location": "Santa Monica",
-                "mapLink": "https://www.google.com/maps/search/?api=1&query=Santa+Monica+Pier",
-                "icon": "beach_access"
-            },
-            {
-                "time": "14:00",
-                "title": "Option A: Getty Center",
-                "description": "參觀蓋提中心 (需預約)，欣賞藝術與風景。",
-                "location": "Brentwood",
-                "mapLink": "https://www.google.com/maps/search/?api=1&query=The+Getty+Center",
-                "icon": "museum"
-            },
-            {
                 "time": "09:00",
-                "title": "Option B: Universal Studios",
+                "title": "Universal Studios",
                 "description": "環球影城一日遊：瑪利歐、哈利波特區。",
                 "location": "Universal City",
-                "mapLink": "",
+                "mapLink": "https://www.google.com/maps/place/%E5%A5%BD%E8%90%8A%E5%A1%A2%E7%92%B0%E7%90%83%E5%BD%B1%E5%9F%8E/@34.1370756,-118.358177,17z/data=!3m1!4b1!4m6!3m5!1s0x80c2be4f253238cf:0xd3dd5027799c9a71!8m2!3d34.1370713!4d-118.3533061!16zL20vMDVxc3k4?entry=tts&g_ep=EgoyMDI2MDExMy4wIPu8ASoASAFQAw%3D%3D&skid=1b3f85f7-56a0-4a7c-b9a0-d5ed0e3c5d20",
                 "icon": "movie"
-            },
-            {
-                "time": "08:00",
-                "title": "Option C: Disneyland",
-                "description": "迪士尼樂園或冒險樂園一日遊。",
-                "location": "Anaheim",
-                "mapLink": "",
-                "icon": "castle"
             }
         ]
     },
@@ -328,7 +304,7 @@
                 "title": "Seven Magic Mountains",
                 "description": "前往七彩石 (Seven Magic Mountains) 拍照。",
                 "location": "S Las Vegas Blvd",
-                "mapLink": "https://www.google.com/maps/search/?api=1&query=Seven+Magic+Mountains",
+                "mapLink": "https://www.google.com/maps/place/Seven+Magic+Mountains/@35.8392389,-115.270961,17z/data=!3m1!4b1!4m6!3m5!1s0x80cf35779dba7553:0x91f1fabf13d53cdd!8m2!3d35.8392389!4d-115.270961!16s%2Fg%2F11cn5s05x0?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
                 "icon": "photo_camera"
             },
             {
@@ -344,7 +320,7 @@
                 "title": "Ontario Mills Outlets",
                 "description": "安大略米爾斯室內 Outlet 最後衝刺購物。",
                 "location": "Ontario",
-                "mapLink": "https://www.google.com/maps/search/?api=1&query=Ontario+Mills",
+                "mapLink": "https://www.google.com/maps/place/Ontario+Mills/@34.0729887,-117.5545679,17z/data=!3m1!4b1!4m6!3m5!1s0x80c33582234a6999:0x2c606dc846c3f534!8m2!3d34.0729843!4d-117.551993!16zL20vMDJoeXgw?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
                 "icon": "shopping_bag"
             },
             {
@@ -378,7 +354,7 @@
                 "title": "Rancho Santa Ana Botanic Garden",
                 "description": "前往 Claremont 的植物園散步。",
                 "location": "Claremont",
-                "mapLink": "https://www.google.com/maps/search/?api=1&query=California+Botanic+Garden",
+                "mapLink": "https://www.google.com/maps/place/California+Botanic+Garden/@34.1107605,-117.713958,17z/data=!3m1!4b1!4m6!3m5!1s0x80c331ca6d3842ff:0x8a008e9e0e1050cc!8m2!3d34.1107605!4d-117.713958!16zL20vMDV0Ym43?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
                 "icon": "park"
             },
             {
