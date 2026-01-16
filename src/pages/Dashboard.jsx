@@ -10,6 +10,8 @@ export default function Dashboard() {
     const navigate = useNavigate();
     const { currentUser, logout } = useAuth(); // Get logout function
     const [totalExpense, setTotalExpense] = useState(0);
+    const [weather, setWeather] = useState(null);
+    const [goldenHour, setGoldenHour] = useState("Loading...");
 
     const handleLogout = async () => {
         if (window.confirm("Are you sure you want to log out?")) {
@@ -81,7 +83,43 @@ export default function Dashboard() {
         }
 
         fetchExpenses();
+        fetchExpenses();
     }, [currentUser]);
+
+    // Fetch Weather for LA
+    useEffect(() => {
+        async function fetchWeather() {
+            try {
+                const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=34.0522&longitude=-118.2437&current_weather=true&temperature_unit=fahrenheit&daily=sunset&timezone=America%2FLos_Angeles`);
+                const data = await res.json();
+                setWeather(data.current_weather);
+
+                // Calculate Golden Hour (approx 1 hour before sunset)
+                if (data.daily && data.daily.sunset && data.daily.sunset.length > 0) {
+                    const sunsetTime = new Date(data.daily.sunset[0]);
+                    const goldenHourStart = new Date(sunsetTime.getTime() - 60 * 60 * 1000); // 1 hour before sunset
+                    const now = new Date();
+
+                    const diffMs = goldenHourStart - now;
+                    const diffMins = Math.floor(diffMs / 60000);
+
+                    if (diffMins > 0) {
+                        const hours = Math.floor(diffMins / 60);
+                        const mins = diffMins % 60;
+                        setGoldenHour(`Starts in ${hours}h ${mins}m`);
+                    } else if (diffMins > -60) {
+                        setGoldenHour("Happening Now!");
+                    } else {
+                        setGoldenHour("Ended for today");
+                    }
+                }
+            } catch (error) {
+                console.error("Failed to fetch weather", error);
+                setGoldenHour("Unavailable");
+            }
+        }
+        fetchWeather();
+    }, []);
 
     return (
         <div className="relative w-full max-w-[430px] mx-auto flex flex-col bg-background-dark min-h-screen pb-28 font-display shadow-2xl">
@@ -143,7 +181,16 @@ export default function Dashboard() {
                                 <span className="material-symbols-outlined text-lakers-purple text-4xl fill-icon">partly_cloudy_day</span>
                             </div>
                             <div>
-                                <p className="text-white text-xl font-black">74°F <span className="text-primary font-medium ml-1">Sunny</span></p>
+                                <p className="text-white text-xl font-black">
+                                    {weather ? (
+                                        <>
+                                            {Math.round(weather.temperature)}°F <span className="text-base font-normal opacity-60">/ {Math.round((weather.temperature - 32) * 5 / 9)}°C</span>
+                                        </>
+                                    ) : '--'}
+                                    <span className="text-primary font-medium ml-1">
+                                        {weather ? 'Current' : 'Loading...'}
+                                    </span>
+                                </p>
                                 <p className="text-primary/70 text-[11px] font-bold flex items-center gap-1 uppercase tracking-wider">
                                     <span className="material-symbols-outlined text-[12px]">location_on</span> Los Angeles, CA
                                 </p>
@@ -151,7 +198,7 @@ export default function Dashboard() {
                         </div>
                         <div className="text-right">
                             <p className="text-primary text-[10px] font-black uppercase tracking-wider mb-1">Golden Hour</p>
-                            <p className="text-white/90 text-xs font-bold">Starts in 2h 15m</p>
+                            <p className="text-white/90 text-xs font-bold">{goldenHour}</p>
                         </div>
                     </div>
                 </section>
@@ -161,7 +208,7 @@ export default function Dashboard() {
                     <h2 className="text-white text-xl font-black tracking-tight uppercase">8-Day Itinerary</h2>
                     <div className="flex items-center gap-1 bg-lakers-purple px-3 py-1.5 rounded-full border border-primary/30">
                         <span className="material-symbols-outlined text-[16px] text-primary fill-icon">calendar_month</span>
-                        <span className="text-primary text-[10px] font-black uppercase tracking-wider">Oct 12 - 19</span>
+                        <span className="text-primary text-[10px] font-black uppercase tracking-wider">2/18 - 2/25</span>
                     </div>
                 </div>
                 <section className="space-y-4 pb-8">

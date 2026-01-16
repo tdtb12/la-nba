@@ -1,5 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { collection, query, where, onSnapshot, Timestamp } from "firebase/firestore";
+import { db } from "../firebase";
+import currencyJs from "currency.js";
 import itineraryData from "../data/itinerary.json";
 import EventMap from "../components/EventMap";
 
@@ -20,6 +23,7 @@ export default function DayDetail() {
     // Find the day (convert id param to number)
     const dayData = itineraryData.find(d => d.id === parseInt(id));
     const [weather, setWeather] = useState(null);
+    const [dailyTotal, setDailyTotal] = useState(0);
 
     useEffect(() => {
         if (!dayData) return;
@@ -37,6 +41,36 @@ export default function DayDetail() {
         }
 
         fetchWeather();
+    }, [dayData]);
+
+    // Calculate Daily Expenses
+    useEffect(() => {
+        if (!dayData) return;
+
+        // Construct date range for the day (00:00:00 to 23:59:59)
+        const startOfDay = new Date(dayData.date + "T00:00:00");
+        const endOfDay = new Date(dayData.date + "T23:59:59");
+
+        const q = query(
+            collection(db, "expenses"),
+            where("createdAt", ">=", Timestamp.fromDate(startOfDay)),
+            where("createdAt", "<=", Timestamp.fromDate(endOfDay))
+        );
+
+        const unsubscribe = onSnapshot(q, (snapshot) => {
+            let total = currencyJs(0);
+            snapshot.docs.forEach(doc => {
+                const data = doc.data();
+                if (data.amount) {
+                    total = total.add(data.amount);
+                }
+            });
+            setDailyTotal(total.value);
+        }, (error) => {
+            console.error("Error fetching available expenses: ", error);
+        });
+
+        return () => unsubscribe();
     }, [dayData]);
 
     if (!dayData) return <div className="text-white text-center pt-20">Day not found</div>;
@@ -144,11 +178,11 @@ export default function DayDetail() {
                         </div>
                         <div className="flex justify-between text-sm">
                             <span className="opacity-80">Activities & Dining</span>
-                            <span className="font-semibold">$120.45</span>
+                            <span className="font-semibold">${dailyTotal.toFixed(2)}</span>
                         </div>
                         <div className="pt-3 border-t border-white/20 flex justify-between items-end">
                             <span className="text-sm opacity-80 font-medium uppercase tracking-wider">Total Spent</span>
-                            <span className="text-2xl font-black">$120.45</span>
+                            <span className="text-2xl font-black">${dailyTotal.toFixed(2)}</span>
                         </div>
                     </div>
                 </div>
