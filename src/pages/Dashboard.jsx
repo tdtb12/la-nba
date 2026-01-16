@@ -5,6 +5,7 @@ import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore"; // Import needed functions
 import { db } from "../firebase"; // Import db
+import { toCelsius } from "../utils/weather";
 
 export default function Dashboard() {
     const navigate = useNavigate();
@@ -184,7 +185,7 @@ export default function Dashboard() {
                                 <p className="text-white text-xl font-black">
                                     {weather ? (
                                         <>
-                                            {Math.round(weather.temperature)}°F <span className="text-base font-normal opacity-60">/ {Math.round((weather.temperature - 32) * 5 / 9)}°C</span>
+                                            {Math.round(weather.temperature)}°F <span className="text-base font-normal opacity-60">/ {toCelsius(weather.temperature)}°C</span>
                                         </>
                                     ) : '--'}
                                     <span className="text-primary font-medium ml-1">

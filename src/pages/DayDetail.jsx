@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { collection, query, where, onSnapshot, Timestamp } from "firebase/firestore";
 import { db } from "../firebase";
 import currencyJs from "currency.js";
+import { toCelsius } from "../utils/weather";
 import itineraryData from "../data/itinerary.json";
 import EventMap from "../components/EventMap";
 
@@ -107,7 +108,7 @@ export default function DayDetail() {
                             <span className="text-4xl font-black">
                                 {weather ? (
                                     <>
-                                        {Math.round(weather.temperature)}°F <span className="text-xl font-normal opacity-60">/ {Math.round((weather.temperature - 32) * 5 / 9)}°C</span>
+                                        {Math.round(weather.temperature)}°F <span className="text-xl font-normal opacity-60">/ {toCelsius(weather.temperature)}°C</span>
                                     </>
                                 ) : 'Loading...'}
                             </span>
