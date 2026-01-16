@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build --base=/la-nba/",
     "lint": "eslint .",
+    "clean": "rimraf dist node_modules/.vite",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "npm run clean && npm run build && gh-pages -d dist"
