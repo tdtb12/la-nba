@@ -1,12 +1,43 @@
 import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import itineraryData from "../data/itinerary.json";
 import EventMap from "../components/EventMap";
+
+const LOCATION_COORDS = {
+    "San Gabriel": { lat: 34.0961, lng: -118.1058 },
+    "Pasadena": { lat: 34.1478, lng: -118.1445 },
+    "DTLA / Hollywood": { lat: 34.0522, lng: -118.2437 },
+    "Universal City": { lat: 34.1381, lng: -118.3534 },
+    "Las Vegas": { lat: 36.1699, lng: -115.1398 },
+    "Grand Canyon / Las Vegas": { lat: 36.0544, lng: -112.1401 },
+    "Ontario": { lat: 34.0633, lng: -117.6509 },
+    "ONT Airport": { lat: 34.0560, lng: -117.6012 }
+};
 
 export default function DayDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
     // Find the day (convert id param to number)
     const dayData = itineraryData.find(d => d.id === parseInt(id));
+    const [weather, setWeather] = useState(null);
+
+    useEffect(() => {
+        if (!dayData) return;
+
+        const coords = LOCATION_COORDS[dayData.location] || LOCATION_COORDS["San Gabriel"]; // Fallback
+
+        async function fetchWeather() {
+            try {
+                const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${coords.lat}&longitude=${coords.lng}&current_weather=true&temperature_unit=fahrenheit`);
+                const data = await res.json();
+                setWeather(data.current_weather);
+            } catch (error) {
+                console.error("Failed to fetch weather", error);
+            }
+        }
+
+        fetchWeather();
+    }, [dayData]);
 
     if (!dayData) return <div className="text-white text-center pt-20">Day not found</div>;
 
@@ -31,26 +62,24 @@ export default function DayDetail() {
             <main className="max-w-md mx-auto px-4 space-y-6">
                 {/* Header Bento Stats */}
                 <div className="grid grid-cols-2 gap-4">
-                    <div className="col-span-1 lakers-gradient p-5 rounded-xl shadow-lg text-white">
+                    <div className="col-span-2 lakers-gradient p-5 rounded-xl shadow-lg text-white">
                         <div className="flex items-center gap-2 mb-3">
                             <div className="w-8 h-8 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center">
                                 <span className="material-symbols-outlined text-white text-[20px]">cloudy_snowing</span>
                             </div>
-                            <span className="text-xs font-bold opacity-80 uppercase tracking-wider">Weather</span>
+                            <span className="text-xs font-bold opacity-80 uppercase tracking-wider">Local Forecast</span>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-3xl font-black">{dayData.weather.split(' ')[1]}</span>
-                            <span className="text-xs text-white/80 font-bold uppercase tracking-widest">{dayData.weather.split(' ')[0]}</span>
-                        </div>
-                    </div>
-                    <div className="col-span-1 bg-white dark:bg-card-dark p-5 rounded-xl border border-slate-100 dark:border-white/5 shadow-sm">
-                        <div className="flex items-center gap-2 mb-3">
-                            <span className="material-symbols-outlined text-primary">account_balance_wallet</span>
-                            <span className="text-xs font-semibold opacity-60 uppercase">Budget</span>
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="text-2xl font-bold">$120<span className="text-sm font-normal opacity-40">/$150</span></span>
-                            <span className="text-xs text-red-400 font-medium">-$30 remaining</span>
+                            <span className="text-4xl font-black">
+                                {weather ? (
+                                    <>
+                                        {Math.round(weather.temperature)}°F <span className="text-xl font-normal opacity-60">/ {Math.round((weather.temperature - 32) * 5 / 9)}°C</span>
+                                    </>
+                                ) : 'Loading...'}
+                            </span>
+                            <span className="text-xs text-white/80 font-bold uppercase tracking-widest mt-1">
+                                {weather ? 'Current Temp' : dayData.weather}
+                            </span>
                         </div>
                     </div>
                 </div>

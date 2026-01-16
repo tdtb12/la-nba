@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { collection, addDoc, serverTimestamp, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { useAuth } from "../context/AuthContext";
+import currency from "currency.js";
 
 export default function AddExpense() {
     const navigate = useNavigate();
@@ -51,7 +52,7 @@ export default function AddExpense() {
         setLoading(true);
         try {
             await addDoc(collection(db, "expenses"), {
-                amount: parseFloat(amount),
+                amount: currency(amount).value, // currency.js parses '10.00' correctly and .value returns the float 10.0
                 currency,
                 item,
                 paidBy: currentUser.uid,
@@ -165,7 +166,9 @@ export default function AddExpense() {
                             <p className="text-primary/70 text-[10px] font-bold uppercase tracking-wider">預估每人</p>
                             <p className="text-primary text-2xl font-bold">
                                 {currency === 'USD' ? '$' : 'NT$'}
-                                {amount && (selectedFriends.length + 1) > 0 ? (parseFloat(amount) / (selectedFriends.length + 1)).toFixed(2) : "0.00"}
+                                {amount && (selectedFriends.length + 1) > 0
+                                    ? currency(amount).divide(selectedFriends.length + 1).toString()
+                                    : "0.00"}
                             </p>
                         </div>
                         <div className="bg-primary/20 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight">

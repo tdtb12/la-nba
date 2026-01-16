@@ -13,6 +13,7 @@
     "deploy": "npm run clean && npm run build && gh-pages -d dist"
   },
   "dependencies": {
+    "currency.js": "^2.0.4",
     "firebase": "^12.7.0",
     "leaflet": "^1.9.4",
     "react": "^19.2.0",
