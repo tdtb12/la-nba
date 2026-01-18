@@ -51,10 +51,10 @@
         "events": [
             {
                 "time": "10:00",
-                "title": "Breakfast: Vroman's / Great Maple",
-                "description": "Vroman's Bookstore 旁咖啡廳或 Great Maple 享用早餐。",
+                "title": "Breakfast: Russell's",
+                "description": "Pasadena 經典早餐 Russell's。",
                 "location": "Pasadena",
-                "mapLink": "",
+                "mapLink": "https://www.google.com/maps/place/Russell's/@34.1465303,-118.1503345,17z/data=!4m6!3m5!1s0x80c2c37175240819:0xa7723f1c9d7a79f3!8m2!3d34.1465303!4d-118.1503345!16s%2Fg%2F1tfwdr_b?entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoASAFQAw%3D%3D",
                 "icon": "coffee"
             },
             {
