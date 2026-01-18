@@ -6,6 +6,7 @@ import currencyJs from "currency.js";
 import { toCelsius } from "../utils/weather";
 import itineraryData from "../data/itinerary.json";
 import EventMap from "../components/EventMap";
+import BottomNav from "../components/BottomNav";
 
 const LOCATION_COORDS = {
     "San Gabriel": { lat: 34.0961, lng: -118.1058 },
@@ -189,30 +190,8 @@ export default function DayDetail() {
                 </div>
             </main>
 
-            {/* Floating Navigation Bar */}
-            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-[360px] bg-white/90 dark:bg-card-dark/90 backdrop-blur-xl rounded-full px-2 py-2 flex items-center justify-between shadow-2xl border border-white/10 z-[100]">
-                <button onClick={() => navigate('/itinerary')} className="flex-1 flex flex-col items-center justify-center py-2 text-primary">
-                    <span className="material-symbols-outlined">calendar_month</span>
-                    <span className="text-[10px] font-bold mt-1">Days</span>
-                </button>
-                <button onClick={() => navigate('/overview')} className="flex-1 flex flex-col items-center justify-center py-2 text-slate-400 hover:text-white transition-colors">
-                    <span className="material-symbols-outlined">dashboard</span>
-                    <span className="text-[10px] font-bold mt-1">Dash</span>
-                </button>
-                <div className="flex-1 flex justify-center -mt-8">
-                    <button onClick={() => navigate('/add-expense')} className="w-14 h-14 bg-primary text-white rounded-full shadow-lg flex items-center justify-center ring-4 ring-background-light dark:ring-background-dark active:scale-95 transition-transform">
-                        <span className="material-symbols-outlined text-3xl">add</span>
-                    </button>
-                </div>
-                <button onClick={() => navigate('/add-expense')} className="flex-1 flex flex-col items-center justify-center py-2 text-slate-400 hover:text-white transition-colors">
-                    <span className="material-symbols-outlined">payments</span>
-                    <span className="text-[10px] font-bold mt-1">Split</span>
-                </button>
-                <button className="flex-1 flex flex-col items-center justify-center py-2 text-slate-400 hover:text-white transition-colors">
-                    <span className="material-symbols-outlined">person</span>
-                    <span className="text-[10px] font-bold mt-1">Profile</span>
-                </button>
-            </div>
+            {/* Bottom Navigation */}
+            <BottomNav />
         </div>
     );
 }

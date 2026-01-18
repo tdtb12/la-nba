@@ -4,6 +4,7 @@ import { collection, addDoc, serverTimestamp, getDocs } from "firebase/firestore
 import { db } from "../firebase";
 import { useAuth } from "../context/AuthContext";
 import currencyJs from "currency.js";
+import BottomNav from "../components/BottomNav";
 
 export default function AddExpense() {
     const navigate = useNavigate();
@@ -183,12 +184,13 @@ export default function AddExpense() {
                     </div>
                 </div>
             </main>
-            <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] p-6 bg-gradient-to-t from-background-dark via-background-dark to-transparent pt-10 z-30">
+            <div className="fixed bottom-24 left-1/2 -translate-x-1/2 w-full max-w-[430px] p-6 bg-gradient-to-t from-background-dark via-background-dark to-transparent pt-10 z-30">
                 <button onClick={handleSave} disabled={loading} className="w-full bg-primary hover:bg-primary/90 text-lakers-purple font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2 active:scale-95 disabled:opacity-50">
                     <span className="material-symbols-outlined">add</span>
                     新增費用
                 </button>
             </div>
+            <BottomNav />
         </div>
     );
 }

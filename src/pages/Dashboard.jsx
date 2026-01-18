@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
+import BottomNav from "../components/BottomNav";
 import itineraryData from "../data/itinerary.json";
 import { useAuth } from "../context/AuthContext";
 import { useEffect, useState } from "react";
@@ -241,7 +241,7 @@ export default function Dashboard() {
                 </section>
             </main>
 
-            <Navbar />
+            <BottomNav />
         </div>
     );
 }
