@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import BottomNav from "../components/BottomNav";
-import itineraryData from "../data/itinerary.json";
 import { useAuth } from "../context/AuthContext";
+import { useSchedule } from "../context/ScheduleContext";
 import { useEffect, useState } from "react";
 import { collection, query, where, getDocs } from "firebase/firestore"; // Import needed functions
 import { db } from "../firebase"; // Import db
@@ -10,6 +10,7 @@ import { toCelsius } from "../utils/weather";
 export default function Dashboard() {
     const navigate = useNavigate();
     const { currentUser, logout } = useAuth(); // Get logout function
+    const { schedule } = useSchedule();
     const [totalExpense, setTotalExpense] = useState(0);
     const [weather, setWeather] = useState(null);
     const [goldenHour, setGoldenHour] = useState("Loading...");
@@ -213,7 +214,7 @@ export default function Dashboard() {
                     </div>
                 </div>
                 <section className="space-y-4 pb-8">
-                    {itineraryData.map((day, index) => (
+                    {schedule.map((day, index) => (
                         <div
                             key={day.id}
                             onClick={() => navigate(`/day/${day.id}`)}

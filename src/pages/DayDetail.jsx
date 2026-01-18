@@ -4,9 +4,10 @@ import { collection, query, where, onSnapshot, Timestamp } from "firebase/firest
 import { db } from "../firebase";
 import currencyJs from "currency.js";
 import { toCelsius } from "../utils/weather";
-import itineraryData from "../data/itinerary.json";
+
 import EventMap from "../components/EventMap";
 import BottomNav from "../components/BottomNav";
+import { useSchedule } from "../context/ScheduleContext";
 
 const LOCATION_COORDS = {
     "San Gabriel": { lat: 34.0961, lng: -118.1058 },
@@ -22,8 +23,8 @@ const LOCATION_COORDS = {
 export default function DayDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
-    // Find the day (convert id param to number)
-    const dayData = itineraryData.find(d => d.id === parseInt(id));
+    const { getDay } = useSchedule();
+    const dayData = getDay(id);
     const [weather, setWeather] = useState(null);
     const [dailyTotal, setDailyTotal] = useState(0);
 
@@ -89,8 +90,9 @@ export default function DayDetail() {
                         <h1 className="text-[10px] font-bold opacity-60 uppercase tracking-widest">{dayData.date}</h1>
                         <p className="text-lg font-extrabold text-primary">Day {dayData.id}: {dayData.location}</p>
                     </div>
-                    <button className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-200 dark:bg-card-dark text-slate-900 dark:text-white shadow-sm">
-                        <span className="material-symbols-outlined text-[20px]">more_vert</span>
+                    <button onClick={() => navigate(`/manage/${dayData.id}`)} className="w-auto px-4 h-10 flex items-center justify-center rounded-full bg-accent text-primary shadow-sm font-bold text-xs uppercase gap-1 hover:bg-accent/80 transition-colors">
+                        <span className="material-symbols-outlined text-[16px]">edit</span>
+                        Edit
                     </button>
                 </div>
             </nav>
@@ -189,6 +191,14 @@ export default function DayDetail() {
                     </div>
                 </div>
             </main>
+
+            {/* Floating Action Button for Add Event */}
+            <button
+                onClick={() => navigate(`/manage/${dayData.id}`)}
+                className="fixed bottom-24 right-6 bg-accent text-primary p-4 rounded-full shadow-[0_10px_30px_rgba(253,185,39,0.3)] border-4 border-background-dark active:scale-90 transition-transform z-40 hover:brightness-110"
+            >
+                <span className="material-symbols-outlined text-3xl font-bold">add</span>
+            </button>
 
             {/* Bottom Navigation */}
             <BottomNav />

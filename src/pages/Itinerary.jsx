@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import itineraryData from "../data/itinerary.json";
+import BottomNav from "../components/BottomNav";
+import { useSchedule } from "../context/ScheduleContext";
 
 export default function Itinerary() {
     const navigate = useNavigate();
+    const { schedule } = useSchedule();
 
     return (
         <div className="relative w-full max-w-[430px] mx-auto flex flex-col bg-background-dark min-h-screen pb-24 font-display">
@@ -16,7 +17,7 @@ export default function Itinerary() {
             </header>
 
             <main className="flex-1 px-5 pt-6 space-y-6">
-                {itineraryData.map((day) => (
+                {schedule.map((day) => (
                     <div key={day.id} onClick={() => navigate(`/day/${day.id}`)} className="group flex items-start gap-4 p-4 rounded-2xl border border-primary/20 bg-card-dark active:bg-white/5 cursor-pointer shadow-sm">
                         <div className="flex flex-col items-center gap-1 min-w-[3rem]">
                             <span className="text-primary/60 text-[10px] font-bold uppercase">{day.weekday.substring(0, 3)}</span>
@@ -37,7 +38,7 @@ export default function Itinerary() {
                     </div>
                 ))}
             </main>
-            <Navbar />
+            <BottomNav />
         </div>
     );
 }
