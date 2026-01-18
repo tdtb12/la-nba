@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSchedule } from "../context/ScheduleContext";
 import BottomNav from "../components/BottomNav";
 
@@ -9,6 +9,55 @@ export default function ManageSchedule() {
     const { getDay, addEvent, updateEvent, deleteEvent, schedule, syncToFirestore } = useSchedule();
     const [dayData, setDayData] = useState(null);
     const [editingIndex, setEditingIndex] = useState(null);
+
+    const scrollContainerRef = useRef(null);
+
+    // Drag to scroll state
+    const isDragging = useRef(false);
+    const startX = useRef(0);
+    const scrollLeft = useRef(0);
+
+    const handleMouseDown = (e) => {
+        isDragging.current = true;
+        startX.current = e.pageX - scrollContainerRef.current.offsetLeft;
+        scrollLeft.current = scrollContainerRef.current.scrollLeft;
+        scrollContainerRef.current.style.cursor = 'grabbing';
+        scrollContainerRef.current.style.userSelect = 'none';
+    };
+
+    const handleMouseLeave = () => {
+        isDragging.current = false;
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.style.cursor = 'grab';
+            scrollContainerRef.current.style.removeProperty('user-select');
+        }
+    };
+
+    const handleMouseUp = () => {
+        isDragging.current = false;
+        if (scrollContainerRef.current) {
+            scrollContainerRef.current.style.cursor = 'grab';
+            scrollContainerRef.current.style.removeProperty('user-select');
+        }
+    };
+
+    const handleMouseMove = (e) => {
+        if (!isDragging.current) return;
+        e.preventDefault();
+        const x = e.pageX - scrollContainerRef.current.offsetLeft;
+        const walk = (x - startX.current) * 2; // Scroll-fast
+        scrollContainerRef.current.scrollLeft = scrollLeft.current - walk;
+    };
+
+    // Auto-scroll to active day
+    useEffect(() => {
+        if (scrollContainerRef.current && dayId) {
+            const activeBtn = scrollContainerRef.current.querySelector(`[data-day-id="${dayId}"]`);
+            if (activeBtn) {
+                activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }
+        }
+    }, [dayId, schedule]);
 
     // Form inputs
     const [when, setWhen] = useState("");
@@ -115,12 +164,20 @@ export default function ManageSchedule() {
                     </div>
                 </div>
                 {/* Day Selector (Horizontal Scroll) */}
-                <div className="flex overflow-x-auto custom-scrollbar px-4 gap-6 border-b border-white/10 pb-1">
+                <div
+                    ref={scrollContainerRef}
+                    className="flex overflow-x-auto custom-scrollbar px-4 gap-6 border-b border-white/10 pb-1 snap-x cursor-grab active:cursor-grabbing"
+                    onMouseDown={handleMouseDown}
+                    onMouseLeave={handleMouseLeave}
+                    onMouseUp={handleMouseUp}
+                    onMouseMove={handleMouseMove}
+                >
                     {schedule.map((d) => (
                         <button
                             key={d.id}
+                            data-day-id={d.id}
                             onClick={() => navigate(`/manage/${d.id}`)}
-                            className={`flex flex-col items-center justify-center border-b-4 pb-3 pt-2 shrink-0 min-w-[60px] transition-colors ${d.id === parseInt(dayId) ? 'border-accent text-accent' : 'border-transparent text-white/40'}`}
+                            className={`flex flex-col items-center justify-center border-b-4 pb-3 pt-2 shrink-0 min-w-[60px] snap-center transition-colors ${d.id === parseInt(dayId) ? 'border-accent text-accent' : 'border-transparent text-white/40'}`}
                         >
                             <p className="text-xs font-black uppercase">Day {d.id}</p>
                             <p className="text-[10px] font-bold opacity-70">{formatDate(d.date)}</p>

@@ -83,7 +83,7 @@ export default function DayDetail() {
             {/* Top Navigation */}
             <nav className="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-4">
                 <div className="flex items-center justify-between max-w-md mx-auto">
-                    <button onClick={() => navigate(-1)} className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-200 dark:bg-card-dark text-slate-900 dark:text-white shadow-sm active:scale-95 transition-transform">
+                    <button onClick={() => navigate(`/overview`)} className="w-10 h-10 flex items-center justify-center rounded-full bg-slate-200 dark:bg-card-dark text-slate-900 dark:text-white shadow-sm active:scale-95 transition-transform">
                         <span className="material-symbols-outlined text-[20px]">arrow_back_ios_new</span>
                     </button>
                     <div className="text-center">
