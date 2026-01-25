@@ -173,8 +173,11 @@ const ExpenseDetails = () => {
 
                         {/* Actions */}
                         <div className="flex flex-col gap-3 pt-4">
-                            <button className="w-full h-16 bg-[#552583] text-white rounded-2xl font-extrabold uppercase tracking-[0.2em] flex items-center justify-center gap-3 active:scale-95 transition-all border-b-4 border-[#3a195a] shadow-lg">
-                                <Pencil size={20} /> Edit Transaction
+                            <button
+                                onClick={() => navigate(`/edit-expense/${id}`, { state: { expense: transaction } })}
+                                className="w-full h-16 bg-[#552583] text-white rounded-2xl font-extrabold uppercase tracking-[0.2em] flex items-center justify-center gap-3 active:scale-95 transition-all border-b-4 border-[#3a195a] shadow-lg"
+                            >
+                                <Pencil size={20} /> Edit Expense
                             </button>
                             <button className="w-full h-16 bg-[#262626] text-red-500 rounded-2xl font-extrabold uppercase tracking-[0.2em] flex items-center justify-center gap-3 active:scale-95 transition-all border border-red-500/10 hover:bg-red-500/5">
                                 <Trash2 size={20} /> Delete

@@ -1,40 +1,19 @@
-import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { collection, addDoc, serverTimestamp, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
-import { useAuth } from "../context/AuthContext";
-import currencyJs from "currency.js";
-import BottomNav from "../components/BottomNav";
+import { useUsers } from "../context/UsersContext";
 
 export default function AddExpense() {
     const navigate = useNavigate();
     const { currentUser } = useAuth();
+    const { usersList, loading: usersLoading } = useUsers();
+
     const [amount, setAmount] = useState("");
     const [currency, setCurrency] = useState("USD");
     const [item, setItem] = useState("");
     const [selectedFriends, setSelectedFriends] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [availableUsers, setAvailableUsers] = useState([]);
 
-    useEffect(() => {
-        async function fetchUsers() {
-            try {
-                const querySnapshot = await getDocs(collection(db, "users"));
-                const users = [];
-                querySnapshot.forEach((doc) => {
-                    // exclude current user from the list if desired, but user might want to split with themselves? 
-                    // usually "split with" implies others. Let's include everyone so they can pick.
-                    if (doc.id !== currentUser?.uid) {
-                        users.push(doc.data());
-                    }
-                });
-                setAvailableUsers(users);
-            } catch (error) {
-                console.error("Error fetching users:", error);
-            }
-        }
-        fetchUsers();
-    }, [currentUser]);
+    // Derived state for available users (exclude current if desired, but previously logic was "exclude current user")
+    // Original: if (doc.id !== currentUser?.uid) users.push...
+    const availableUsers = usersList.filter(u => u.id !== currentUser?.uid);
 
     const toggleFriend = (friendId) => {
         if (selectedFriends.includes(friendId)) {

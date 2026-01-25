@@ -3,29 +3,22 @@ import { useNavigate } from "react-router-dom";
 import { collection, query, orderBy, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { useAuth } from "../context/AuthContext";
+import { useUsers } from "../context/UsersContext";
 import BottomNav from "../components/BottomNav";
 import { BarChart, ChevronRight } from "lucide-react";
 
 export default function ExpensesList() {
     const navigate = useNavigate();
     const { currentUser } = useAuth();
+    const { users } = useUsers(); // Use global users map
     const [currency, setCurrency] = useState("USD");
     const [expenses, setExpenses] = useState([]);
-    const [users, setUsers] = useState({});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
             try {
-                // 1. Fetch Users
-                const usersSnapshot = await getDocs(collection(db, "users"));
-                const usersMap = {};
-                usersSnapshot.forEach((doc) => {
-                    usersMap[doc.id] = doc.data();
-                });
-                setUsers(usersMap);
-
-                // 2. Fetch Expenses
+                // Fetch Expenses Only (Users handled by context)
                 const q = query(collection(db, "expenses"), orderBy("createdAt", "desc"));
                 const querySnapshot = await getDocs(q);
                 const expensesList = [];
