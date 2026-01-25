@@ -124,9 +124,17 @@
                 "icon": "diamond"
             },
             {
+                "time": "12:30",
+                "title": "Lunch: Pink's Hot Dogs",
+                "description": "必吃熱狗老店 (Pink's Hot Dogs)。",
+                "location": "Pink's Hot Dogs",
+                "mapLink": "https://www.google.com/maps/place/Pink's+Hot+Dogs/@35.8047311,-175.7075714,4z/data=!4m6!3m5!1s0x80c2bf2accdf0857:0x28baab47a2ca58e0!8m2!3d34.0838505!4d-118.3442797!16zL20vMGN4Njcy?entry=ttu&g_ep=EgoyMDI2MDExNS4wIKXMDSoASAFQAw%3D%3D",
+                "icon": "fastfood"
+            },
+            {
                 "time": "13:30",
-                "title": "Lunch: The Grove / Farmers Market",
-                "description": "在 The Grove 購物中心或農夫市場享用午餐。",
+                "title": "The Grove / Farmers Market",
+                "description": "在 The Grove 購物中心或農夫市場逛街與甜點。",
                 "location": "The Grove",
                 "mapLink": "",
                 "icon": "lunch_dining"
