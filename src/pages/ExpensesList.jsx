@@ -5,7 +5,7 @@ import { db } from "../firebase";
 import { useAuth } from "../context/AuthContext";
 import { useUsers } from "../context/UsersContext";
 import BottomNav from "../components/BottomNav";
-import { BarChart, ChevronRight } from "lucide-react";
+import { DollarSign, ChevronRight } from "lucide-react";
 
 export default function ExpensesList() {
     const navigate = useNavigate();
@@ -85,21 +85,22 @@ export default function ExpensesList() {
 
                 <button
                     onClick={() => navigate('/expense-summary')}
-                    className="w-full mb-6 bg-lakers-gold p-5 rounded-3xl flex items-center justify-between shadow-[0_10px_20px_rgba(253,185,39,0.3)] active:scale-[0.98] transition-transform"
+                    className="w-full mb-6 bg-[#FDB927] p-5 rounded-[32px] flex items-center justify-between shadow-[0_8px_0_#b8861b] active:translate-y-[2px] active:shadow-[0_4px_0_#b8861b] transition-all"
                 >
-                    <div className="flex items-center gap-4 text-lakers-purple">
-                        {/* Icon Container */}
-                        <div className="bg-lakers-purple/10 p-2 rounded-xl">
-                            <BarChart size={20} className="stroke-[3px]" />
+                    <div className="flex items-center gap-4 text-[#552583]">
+                        {/* Icon Container with subtle purple tint */}
+                        <div className="bg-[#552583]/10 p-2.5 rounded-2xl">
+                            <DollarSign size={20} strokeWidth={3} />
                         </div>
 
                         <div className="text-left">
-                            <p className="font-black text-sm uppercase tracking-[-0.02em] italic">View My Summary</p>
-                            <p className="text-[10px] font-bold opacity-60 uppercase tracking-widest">Settlement</p>
+                            {/* THE KEY FONT FIXES HERE */}
+                            <p className="font-lakers font-[900] italic text-sm uppercase tracking-[0.15em] leading-tight">View My Summary</p>
+                            <p className="text-[10px] font-black opacity-50 uppercase tracking-[0.2em] mt-0.5">Settlement</p>
                         </div>
                     </div>
 
-                    <ChevronRight size={20} className="text-lakers-purple" />
+                    <ChevronRight size={22} strokeWidth={3} className="text-[#552583]" />
                 </button>
 
                 <div className="flex bg-[#362b40] p-1 rounded-xl mb-6 shadow-inner">

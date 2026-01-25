@@ -16,7 +16,8 @@ export default {
                 "card-dark": "#1A1A1A",
             },
             fontFamily: {
-                "display": ["Epilogue", "sans-serif"]
+                "display": ["Epilogue", "sans-serif"],
+                "lakers": ["Inter", "sans-serif"]
             },
             borderRadius: {
                 "DEFAULT": "0.5rem",
