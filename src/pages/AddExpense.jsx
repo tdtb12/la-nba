@@ -1,4 +1,11 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { db } from "../firebase";
+import { useAuth } from "../context/AuthContext";
 import { useUsers } from "../context/UsersContext";
+import BottomNav from "../components/BottomNav";
+import currencyJs from "currency.js";
 
 export default function AddExpense() {
     const navigate = useNavigate();
