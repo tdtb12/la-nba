@@ -121,7 +121,7 @@ export default function AddExpense() {
                 </div>
                 <div className="bg-card-dark rounded-xl p-5 mb-6 shadow-sm border border-primary/20">
                     <div className="flex items-center justify-between mb-6">
-                        <h3 className="text-white text-base font-bold leading-tight">分帳對象</h3>
+                        <h3 className="text-white text-base font-bold leading-tight">分帳對象</h3>不選擇就分給自己
                         <div className="flex items-center gap-1 text-primary/70">
                             <span className="material-symbols-outlined text-sm">group</span>
                             <span className="text-[11px] font-medium italic">選擇朋友</span>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
+import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import { useUsers } from '../context/UsersContext';
@@ -201,16 +201,7 @@ export default function EditExpense() {
         }
     };
 
-    const handleDelete = async () => {
-        if (!window.confirm("Are you sure you want to delete this expense?")) return;
-        try {
-            await deleteDoc(doc(db, 'expenses', id));
-            navigate('/expenses');
-        } catch (e) {
-            console.error("Error deleting:", e);
-            alert("Failed to delete");
-        }
-    };
+
 
     if (loading) return <div className="min-h-screen bg-[#0F0F0F] text-white flex items-center justify-center">Loading...</div>;
 
@@ -383,12 +374,7 @@ export default function EditExpense() {
                     >
                         Cancel
                     </button>
-                    <button
-                        onClick={handleDelete}
-                        className="w-full border border-red-500/20 text-red-500/60 hover:bg-red-500/10 hover:text-red-500 py-3 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] mt-2 transition-all"
-                    >
-                        Delete Expense
-                    </button>
+
                 </div>
             </main>
 

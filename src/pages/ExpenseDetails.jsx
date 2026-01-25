@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { doc, getDoc } from 'firebase/firestore';
+import { doc, getDoc, deleteDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useAuth } from '../context/AuthContext';
 import BottomNav from '../components/BottomNav';
@@ -55,6 +55,17 @@ const ExpenseDetails = () => {
 
         fetchTransaction();
     }, [id]);
+
+    const handleDelete = async () => {
+        if (!window.confirm("Are you sure you want to delete this expense?")) return;
+        try {
+            await deleteDoc(doc(db, 'expenses', id));
+            navigate('/expenses');
+        } catch (e) {
+            console.error("Error deleting:", e);
+            alert("Failed to delete");
+        }
+    };
 
     if (loading) return <div className="min-h-screen bg-[#171717] text-white flex items-center justify-center">Loading...</div>;
     if (!transaction) return <div className="min-h-screen bg-[#171717] text-white flex items-center justify-center">Transaction not found</div>;
@@ -179,7 +190,10 @@ const ExpenseDetails = () => {
                             >
                                 <Pencil size={20} /> Edit Expense
                             </button>
-                            <button className="w-full h-16 bg-[#262626] text-red-500 rounded-2xl font-extrabold uppercase tracking-[0.2em] flex items-center justify-center gap-3 active:scale-95 transition-all border border-red-500/10 hover:bg-red-500/5">
+                            <button
+                                onClick={handleDelete}
+                                className="w-full h-16 bg-[#262626] text-red-500 rounded-2xl font-extrabold uppercase tracking-[0.2em] flex items-center justify-center gap-3 active:scale-95 transition-all border border-red-500/10 hover:bg-red-500/5"
+                            >
                                 <Trash2 size={20} /> Delete
                             </button>
                         </div>
