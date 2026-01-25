@@ -7,10 +7,10 @@ import Dashboard from "./pages/Dashboard";
 import Itinerary from "./pages/Itinerary";
 import DayDetail from "./pages/DayDetail";
 import AddExpense from "./pages/AddExpense";
-import ExpenseDetails from "./pages/ExpenseDetails";
+import ExpensesList from "./pages/ExpensesList";
 import ExpenseSummary from "./pages/ExpenseSummary";
 import ManageSchedule from "./pages/ManageSchedule";
-import TransactionDetails from "./pages/TransactionDetails";
+import ExpenseDetails from "./pages/ExpenseDetails";
 
 function App() {
   return (
@@ -25,8 +25,8 @@ function App() {
             <Route path="/manage/:dayId" element={<ProtectedRoute><ManageSchedule /></ProtectedRoute>} />
 
             <Route path="/add-expense" element={<ProtectedRoute><AddExpense /></ProtectedRoute>} />
-            <Route path="/expenses" element={<ProtectedRoute><ExpenseDetails /></ProtectedRoute>} />
-            <Route path="/expense/:id" element={<ProtectedRoute><TransactionDetails /></ProtectedRoute>} />
+            <Route path="/expenses" element={<ProtectedRoute><ExpensesList /></ProtectedRoute>} />
+            <Route path="/expense/:id" element={<ProtectedRoute><ExpenseDetails /></ProtectedRoute>} />
             <Route path="/expense-summary" element={<ProtectedRoute><ExpenseSummary /></ProtectedRoute>} />
           </Routes>
         </ScheduleProvider>

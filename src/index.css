@@ -5,6 +5,14 @@
 @config "../tailwind.config.js";
 
 @layer base {
+    :root {
+        --lakers-purple: #552583;
+        --lakers-gold: #FDB927;
+        --app-bg: #121212;
+        --card-bg: rgba(255, 255, 255, 0.05);
+        /* White/5 */
+    }
+
     body {
         -webkit-tap-highlight-color: transparent;
         @apply bg-background-dark text-white font-display;
