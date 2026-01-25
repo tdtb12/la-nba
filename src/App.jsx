@@ -8,7 +8,9 @@ import Itinerary from "./pages/Itinerary";
 import DayDetail from "./pages/DayDetail";
 import AddExpense from "./pages/AddExpense";
 import ExpenseDetails from "./pages/ExpenseDetails";
+import ExpenseSummary from "./pages/ExpenseSummary";
 import ManageSchedule from "./pages/ManageSchedule";
+import TransactionDetails from "./pages/TransactionDetails";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
 
             <Route path="/add-expense" element={<ProtectedRoute><AddExpense /></ProtectedRoute>} />
             <Route path="/expenses" element={<ProtectedRoute><ExpenseDetails /></ProtectedRoute>} />
+            <Route path="/expense/:id" element={<ProtectedRoute><TransactionDetails /></ProtectedRoute>} />
+            <Route path="/expense-summary" element={<ProtectedRoute><ExpenseSummary /></ProtectedRoute>} />
           </Routes>
         </ScheduleProvider>
       </AuthProvider>

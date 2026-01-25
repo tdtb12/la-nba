@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { collection, query, orderBy, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { useAuth } from "../context/AuthContext";
+import BottomNav from "../components/BottomNav";
 
 export default function ExpenseDetails() {
     const navigate = useNavigate();
@@ -52,7 +53,8 @@ export default function ExpenseDetails() {
     const formatTime = (timestamp) => {
         if (!timestamp) return "";
         const date = timestamp.toDate();
-        return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        // Mimicking "Today, 7:30 PM" format if needed, but for now just time
+        return date.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
     };
 
     const formatDateGroup = (timestamp) => {
@@ -77,174 +79,171 @@ export default function ExpenseDetails() {
         return groups;
     }, {});
 
-
     return (
-        <div className="relative flex h-full min-h-screen w-full max-w-[430px] mx-auto flex-col bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden shadow-2xl">
-            {/* Header Section */}
-            <header className="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md pt-6 px-4">
-                <div className="flex items-center justify-between mb-4">
-                    <button onClick={() => navigate('/overview')} className="text-lakers-gold cursor-pointer">
-                        <span className="material-symbols-outlined text-3xl">arrow_back_ios</span>
-                    </button>
-                    <h1 className="text-xl font-extrabold tracking-tight uppercase italic dark:text-white">All Expense Details</h1>
-                    <div className="text-lakers-gold">
-                        <span className="material-symbols-outlined text-3xl">more_horiz</span>
-                    </div>
-                </div>
-                {/* Currency Toggle */}
-                <div className="flex bg-slate-200 dark:bg-[#362b40] p-1 rounded-xl mb-6 shadow-inner">
-                    <label className={`flex cursor-pointer h-10 grow items-center justify-center overflow-hidden rounded-lg px-2 transition-all duration-200 ${currency === 'USD' ? 'bg-primary text-white' : 'text-slate-500 dark:text-[#ae9ebd]'}`}>
-                        <span className="truncate">USD</span>
-                        <input checked={currency === 'USD'} onChange={() => setCurrency('USD')} className="invisible w-0" name="currency" type="radio" value="USD" />
-                    </label>
-                    <label className={`flex cursor-pointer h-10 grow items-center justify-center overflow-hidden rounded-lg px-2 transition-all duration-200 ${currency === 'TWD' ? 'bg-primary text-white' : 'text-slate-500 dark:text-[#ae9ebd]'}`}>
-                        <span className="truncate">TWD</span>
-                        <input checked={currency === 'TWD'} onChange={() => setCurrency('TWD')} className="invisible w-0" name="currency" type="radio" value="TWD" />
-                    </label>
+        <div className="min-h-screen bg-[#121212] text-white pb-24 font-sans max-w-[430px] mx-auto">
+            {/* Header */}
+            <header className="p-6 flex justify-between items-center">
+                <button onClick={() => navigate(-1)}>
+                    <span className="material-symbols-outlined rotate-180 text-[#FDB927]">chevron_right</span>
+                </button>
+                <h1 className="text-xl font-black italic tracking-tighter uppercase">Expenses</h1>
+                <div className="flex gap-1">
+                    <div className="w-1 h-1 bg-white rounded-full"></div>
+                    <div className="w-1 h-1 bg-white rounded-full"></div>
+                    <div className="w-1 h-1 bg-white rounded-full"></div>
                 </div>
             </header>
 
-            {/* Main Expense List */}
-            <main className="flex-1 px-4 py-2 space-y-4 pb-32 overflow-y-auto custom-scrollbar">
+            {/* View Summary Banner */}
+            <div className="px-4 mb-6">
+                <button
+                    onClick={() => navigate('/expense-summary')}
+                    className="w-full bg-[#FDB927] p-5 rounded-3xl flex items-center justify-between shadow-lg active:scale-[0.98] transition-transform"
+                >
+                    <div className="flex items-center gap-4 text-[#552583]">
+                        <div className="bg-[#552583]/10 p-2 rounded-lg flex items-center justify-center">
+                            <span className="material-symbols-outlined font-black">attach_money</span>
+                        </div>
+                        <div className="text-left">
+                            <p className="font-black text-sm uppercase tracking-tighter">View My Summary</p>
+                            <p className="text-[10px] font-bold opacity-60">SETTLEMENT</p>
+                        </div>
+                    </div>
+                    <span className="material-symbols-outlined text-[#552583]">chevron_right</span>
+                </button>
+            </div>
+
+            {/* Currency & Search */}
+            <div className="px-4 space-y-4">
+                <div className="flex bg-white/5 p-1 rounded-2xl">
+                    <button onClick={() => setCurrency('USD')} className={`flex-1 py-2 rounded-xl text-xs font-bold transition-colors ${currency === 'USD' ? 'bg-[#552583] text-white' : 'text-white/40'}`}>USD</button>
+                    <button onClick={() => setCurrency('TWD')} className={`flex-1 py-2 rounded-xl text-xs font-bold transition-colors ${currency === 'TWD' ? 'bg-[#552583] text-white' : 'text-white/40'}`}>TWD</button>
+                </div>
+
+                <div className="flex gap-3">
+                    <div className="flex-1 relative">
+                        <span className="material-symbols-outlined absolute left-3 top-2.5 text-white/30 text-lg">search</span>
+                        <input
+                            type="text"
+                            placeholder="Search (e.g. Dinner, Tickets)"
+                            className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 pl-10 pr-4 text-sm focus:outline-none focus:border-[#FDB927] placeholder:text-white/20"
+                        />
+                    </div>
+                    <button className="bg-[#552583] p-3 rounded-2xl text-[#FDB927] flex items-center justify-center">
+                        <span className="material-symbols-outlined">filter_list</span>
+                    </button>
+                </div>
+            </div>
+
+            {/* List */}
+            <div className="mt-8 px-4 space-y-6">
                 {Object.keys(groupedExpenses).map((dateLabel) => (
                     <div key={dateLabel}>
-                        {/* Date Divider */}
-                        <div className="flex items-center gap-3 py-2 pt-4">
-                            <div className="h-[1px] flex-1 bg-primary/20"></div>
-                            <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60 dark:text-primary">{dateLabel}</span>
-                            <div className="h-[1px] flex-1 bg-primary/20"></div>
+                        <div className="flex items-center gap-4 mb-4 mt-6 first:mt-0">
+                            <div className="h-px flex-1 bg-white/10"></div>
+                            <span className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em]">{dateLabel}</span>
+                            <div className="h-px flex-1 bg-white/10"></div>
                         </div>
 
-                        {groupedExpenses[dateLabel].map((expense) => {
-                            // Try to find in fetched users, fallback to currentUser if ID matches, else unknown
-                            let payer = users[expense.paidBy];
-                            if (!payer && currentUser && currentUser.uid === expense.paidBy) {
-                                payer = {
-                                    displayName: currentUser.displayName,
-                                    photoURL: currentUser.photoURL
-                                };
-                            }
-                            if (!payer) payer = { displayName: 'Unknown' };
+                        <div className="space-y-4">
+                            {groupedExpenses[dateLabel].map((expense) => {
+                                // User Resolution Logic
+                                let payer = users[expense.paidBy];
+                                if (!payer && currentUser && currentUser.uid === expense.paidBy) {
+                                    payer = { displayName: currentUser.displayName, photoURL: currentUser.photoURL };
+                                }
+                                if (!payer) payer = { displayName: 'Unknown' };
 
-                            const payerInitial = payer.displayName ? payer.displayName[0] : '?';
-                            const amountDisplay = getDisplayAmount(expense.amount, expense.currency);
-                            const splitList = expense.splitWith || [];
+                                const payerInitial = payer.displayName ? payer.displayName[0] : '?';
+                                const payerColor = "bg-purple-700";
 
-                            return (
-                                <div key={expense.id} className="bg-white dark:bg-card-dark rounded-xl overflow-hidden shadow-xl border-l-4 border-lakers-gold mb-4">
-                                    <div className="p-5">
+                                const amountDisplay = getDisplayAmount(expense.amount, expense.currency);
+
+                                // splitWith might include payer now, filter if desired or show all. 
+                                // Let's filter out the payer from the "Split With" list to avoid redundancy with "Paid By"
+                                const rawSplitList = expense.splitWith || [];
+                                const splitList = rawSplitList.filter(uid => uid !== expense.paidBy);
+
+                                return (
+                                    <div key={expense.id} className="bg-white/5 border border-white/10 rounded-[32px] p-6 relative overflow-hidden group">
+                                        <div className="absolute top-0 left-0 w-1 h-full bg-[#FDB927]"></div>
                                         <div className="flex justify-between items-start mb-4">
-                                            <div className="max-w-[70%]">
-                                                <h3 className="text-lg font-bold leading-tight dark:text-white">{expense.item}</h3>
-                                                <div className="flex items-center gap-2 mt-1">
-                                                    <span className="material-symbols-outlined text-sm text-primary">sell</span>
-                                                    <span className="text-xs font-medium text-slate-400 uppercase tracking-tighter">General</span>
+                                            <div>
+                                                <h3 className="text-xl font-black leading-tight max-w-[200px]">{expense.item}</h3>
+                                                <p className="text-[10px] font-bold text-white/40 mt-1 uppercase tracking-wider italic flex items-center gap-1">
+                                                    <span className="material-symbols-outlined text-[10px]">sell</span> {expense.category || 'General'}
+                                                </p>
+                                            </div>
+                                            <div className="text-right">
+                                                <p className="text-xl font-black text-[#FDB927] leading-none">
+                                                    {currency === 'USD' ? '$' : 'NT$'}{amountDisplay.toFixed(2)}
+                                                </p>
+                                                <p className="text-[8px] font-black text-white/30 uppercase mt-1">Total {currency}</p>
+                                            </div>
+                                        </div>
+
+                                        <div className="flex justify-between items-end pt-4 border-t border-white/5">
+                                            <div className="flex items-center gap-3">
+                                                <div className={`w-10 h-10 rounded-full ${payerColor} flex items-center justify-center text-[10px] font-black border-2 border-[#121212] overflow-hidden`}>
+                                                    {payer.photoURL ? (
+                                                        <img src={payer.photoURL} alt={payer.displayName} className="w-full h-full object-cover" />
+                                                    ) : (
+                                                        payerInitial
+                                                    )}
+                                                </div>
+                                                <div>
+                                                    <p className="text-[8px] font-bold text-white/30 uppercase">Paid By</p>
+                                                    <p className="text-xs font-black">{payer.displayName}</p>
                                                 </div>
                                             </div>
                                             <div className="text-right">
-                                                <p className="text-xl font-black text-lakers-gold gold-glow">
-                                                    {currency === 'USD' ? '$' : 'NT$'}
-                                                    {amountDisplay.toFixed(2)}
-                                                </p>
-                                                <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Total {currency}</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex items-center justify-between mt-6">
-                                            <div className="flex items-center gap-3">
-                                                <div className="relative">
-                                                    <div className="size-10 rounded-full border-2 border-lakers-gold overflow-hidden bg-primary flex items-center justify-center">
-                                                        {payer.photoURL ? (
-                                                            <img src={payer.photoURL} alt={payer.displayName} className="w-full h-full object-cover" />
-                                                        ) : (
-                                                            <span className="text-white font-bold text-xs">{payerInitial}</span>
-                                                        )}
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <p className="text-[10px] font-bold text-slate-400 uppercase leading-none mb-1">Paid by</p>
-                                                    <p className="text-sm font-bold dark:text-white">{payer.displayName}</p>
-                                                </div>
-                                            </div>
-                                            <div className="flex flex-col items-end">
-                                                <p className="text-[10px] font-bold text-slate-400 uppercase leading-none mb-2">Split with</p>
-                                                <div className="flex -space-x-3">
-                                                    {splitList.slice(0, 3).map((uid) => {
-                                                        let user = users[uid];
-                                                        if (!user && currentUser && currentUser.uid === uid) {
-                                                            user = {
-                                                                displayName: currentUser.displayName,
-                                                                photoURL: currentUser.photoURL
-                                                            };
-                                                        }
+                                                <p className="text-[8px] font-bold text-white/30 uppercase mb-1">Split With</p>
+                                                <div className="flex -space-x-2 justify-end">
+                                                    {splitList.slice(0, 3).map((uid, i) => {
+                                                        let sUser = users[uid];
+                                                        if (!sUser && currentUser && currentUser.uid === uid) sUser = currentUser;
 
                                                         return (
-                                                            <div key={uid} className="size-8 rounded-full ring-2 ring-white dark:ring-card-dark bg-slate-700 flex items-center justify-center text-[10px] font-bold text-white shadow-md overflow-hidden">
-                                                                {user?.photoURL ? (
-                                                                    <img src={user.photoURL} alt={user.displayName} className="w-full h-full object-cover" />
-                                                                ) : (
-                                                                    <span>{user?.displayName ? user.displayName[0] : '?'}</span>
-                                                                )}
+                                                            <div key={i} className="w-6 h-6 rounded-full bg-white/10 border border-[#121212] flex items-center justify-center text-[8px] font-black overflow-hidden">
+                                                                {sUser?.photoURL ? <img src={sUser.photoURL} className="w-full h-full object-cover" /> : (sUser?.displayName?.[0] || '?')}
                                                             </div>
-                                                        );
+                                                        )
                                                     })}
                                                     {splitList.length > 3 && (
-                                                        <div className="size-8 rounded-full ring-2 ring-white dark:ring-card-dark bg-slate-700 flex items-center justify-center text-[10px] font-bold text-white shadow-md">
+                                                        <div className="w-6 h-6 rounded-full bg-white/10 border border-[#121212] flex items-center justify-center text-[8px] font-black">
                                                             +{splitList.length - 3}
                                                         </div>
                                                     )}
-                                                    {splitList.length === 0 && <span className="text-xs text-slate-500 font-bold">None</span>}
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="px-5 py-3 bg-slate-50 dark:bg-black/20 flex justify-between items-center border-t border-slate-100 dark:border-white/5">
-                                        <div className="flex items-center gap-2">
-                                            <span className="material-symbols-outlined text-lg text-slate-400">schedule</span>
-                                            <span className="text-xs font-medium text-slate-400">{formatTime(expense.createdAt)}</span>
+
+                                        <div className="flex justify-between items-center mt-6">
+                                            <div className="flex items-center gap-2 text-white/30 text-[10px] font-bold">
+                                                <span className="material-symbols-outlined text-[12px]">schedule</span> {formatTime(expense.createdAt)}
+                                            </div>
+                                            <button
+                                                onClick={() => navigate(`/expense/${expense.id}`)}
+                                                className="text-[#FDB927] text-[10px] font-black uppercase tracking-widest flex items-center gap-1"
+                                            >
+                                                Details <span className="material-symbols-outlined text-[14px]">chevron_right</span>
+                                            </button>
                                         </div>
-                                        {/* Future: Details Page */}
-                                        {/* <button className="text-xs font-bold uppercase tracking-widest text-primary dark:text-lakers-gold flex items-center gap-1">
-                                            Details <span className="material-symbols-outlined text-base">chevron_right</span>
-                                        </button> */}
                                     </div>
-                                </div>
-                            );
-                        })}
+                                );
+                            })}
+                        </div>
                     </div>
                 ))}
+            </div>
 
-                {expenses.length === 0 && !loading && (
-                    <div className="text-center py-10 text-slate-500">No expenses found.</div>
-                )}
-            </main>
-
-            {/* Floating Action Button */}
             <div className="fixed bottom-24 left-1/2 -translate-x-1/2 flex items-center justify-center z-40">
-                <button onClick={() => navigate('/add-expense')} className="bg-primary text-lakers-gold w-16 h-16 rounded-full shadow-[0_8px_25px_rgba(89,46,127,0.5)] flex items-center justify-center active:scale-95 transition-transform border-4 border-background-dark">
+                <button onClick={() => navigate('/add-expense')} className="bg-[#552583] text-[#FDB927] w-16 h-16 rounded-full shadow-[0_8px_25px_rgba(89,46,127,0.5)] flex items-center justify-center active:scale-95 transition-transform border-4 border-[#121212]">
                     <span className="material-symbols-outlined text-3xl font-black">add</span>
                 </button>
             </div>
 
-            {/* Navigation Bar (iOS Style) - Placeholder, effectively same as Dashboard's but simplified for this view if needed, or we can reuse a component */}
-            <nav className="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto h-20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-xl border-t border-primary/20 flex justify-around items-center px-6 pb-4 z-50">
-                <button onClick={() => navigate('/itinerary')} className="flex flex-col items-center gap-1 text-slate-400">
-                    <span className="material-symbols-outlined">explore</span>
-                    <span className="text-[10px] font-bold uppercase tracking-tighter">Trip</span>
-                </button>
-                <button onClick={() => navigate('/expenses')} className="flex flex-col items-center gap-1 text-primary dark:text-lakers-gold">
-                    <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>payments</span>
-                    <span className="text-[10px] font-bold uppercase tracking-tighter">Expenses</span>
-                </button>
-                {/* Placeholders for now */}
-                <div className="flex flex-col items-center gap-1 text-slate-400">
-                    <span className="material-symbols-outlined">group</span>
-                    <span className="text-[10px] font-bold uppercase tracking-tighter">Squad</span>
-                </div>
-                <div className="flex flex-col items-center gap-1 text-slate-400">
-                    <span className="material-symbols-outlined">settings</span>
-                    <span className="text-[10px] font-bold uppercase tracking-tighter">Menu</span>
-                </div>
-            </nav>
+            <BottomNav active="expenses" />
         </div>
     );
 }

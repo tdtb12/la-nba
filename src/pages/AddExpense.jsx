@@ -52,13 +52,23 @@ export default function AddExpense() {
 
         setLoading(true);
         try {
+            const totalVal = currencyJs(amount);
+            const allInvolvedIds = [currentUser.uid, ...selectedFriends];
+            const splitValues = totalVal.distribute(allInvolvedIds.length);
+
+            const splits = allInvolvedIds.map((uid, index) => ({
+                userId: uid,
+                amount: splitValues[index].value
+            }));
+
             await addDoc(collection(db, "expenses"), {
-                amount: currencyJs(amount).value, // currency.js parses '10.00' correctly and .value returns the float 10.0
-                currency,
                 item,
+                amount: totalVal.value,
+                currency,
                 paidBy: currentUser.uid,
-                splitWith: selectedFriends,
                 createdAt: serverTimestamp(),
+                splits,
+                splitWith: allInvolvedIds
             });
             navigate("/overview");
         } catch (e) {
