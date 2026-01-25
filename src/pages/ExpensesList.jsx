@@ -85,7 +85,7 @@ export default function ExpensesList() {
 
                 <button
                     onClick={() => navigate('/expense-summary')}
-                    className="w-full mb-6 bg-[#FDB927] p-5 rounded-[32px] flex items-center justify-between shadow-[0_8px_0_#b8861b] active:translate-y-[2px] active:shadow-[0_4px_0_#b8861b] transition-all"
+                    className="w-full mb-6 bg-lakers-gold hover:bg-[#eab021] text-primary font-black py-4 px-6 rounded-xl shadow-[0_4px_20px_rgba(253,185,39,0.4)] flex items-center justify-between group active:scale-[0.98] transition-all"
                 >
                     <div className="flex items-center gap-4 text-[#552583]">
                         {/* Icon Container with subtle purple tint */}
