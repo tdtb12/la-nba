@@ -16,6 +16,7 @@ export default {
                 "card-dark": "#1A1A1A",
             },
             fontFamily: {
+                "sans": ["Inter", "sans-serif"],
                 "display": ["Epilogue", "sans-serif"],
                 "lakers": ["Inter", "sans-serif"]
             },
